@@ -1,0 +1,15 @@
+[project]
+name = "jev-vs-openai-decisions"
+version = "0.1.0"
+description = "Head-to-head benchmark: TypeSafe Jev vs OpenAI Decisions API on the same typed decision, measuring latency, cost, accuracy, calibration, option-order sensitivity and repeatability."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kartik Anand" }]
+dependencies = ["httpx>=0.27", "python-dotenv>=1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
