@@ -149,6 +149,25 @@ def load(path: str | Path) -> list[dict]:
     return [json.loads(l) for l in Path(path).read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
+def load_for_run(meta: dict, root: Path) -> tuple[list[dict] | None, str | None]:
+    """The cases a run used, found from meta.json and checked against its sha256. (cases, None) or (None, reason)."""
+    import hashlib
+    ds = meta.get("dataset") or {}
+    if not ds.get("path"):
+        return None, "run metadata has no dataset path"
+    raw = Path(ds["path"])
+    for cand in (raw, root / raw, root / "data" / raw.name):
+        try:
+            if cand.exists():
+                data = cand.read_bytes()
+                if hashlib.sha256(data).hexdigest()[:16] != ds.get("sha256"):
+                    return None, f"{cand} does not match the dataset the run used (sha256 differs)"
+                return [json.loads(l) for l in data.decode("utf-8").splitlines() if l.strip()], None
+        except OSError:
+            continue
+    return None, f"dataset {raw.name} not found"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Generate labelled withdrawal cases")
     ap.add_argument("--n", type=int, default=500)

@@ -1,0 +1,1143 @@
+{
+  "providers": {
+    "jev": {
+      "latency": {
+        "n": 120,
+        "p50": 228.84009999688715,
+        "p90": 278.1240299809724,
+        "p95": 335.1068500167457,
+        "p99": 390.0922769890167,
+        "mean": 239.48251833401932,
+        "min": 180.81390002043918,
+        "max": 489.7167000162881,
+        "p95_including_retries": 335.1164299761876,
+        "server_reported": null
+      },
+      "cost": {
+        "billed_in_run_usd": 0.004217388000000001,
+        "provider_reported_usd": 0.004217388,
+        "provider_reported_calls": 130,
+        "per_call_usd": 3.2453400000000003e-05,
+        "per_1k_decisions_usd": 0.0324534,
+        "per_1m_decisions_usd": 32.4534
+      },
+      "tokens": {
+        "input_per_call": 772.7,
+        "output_per_call": 63.7,
+        "input_total": 100414,
+        "output_total": 8290
+      },
+      "reliability": {
+        "calls": 130,
+        "measure_calls": 120,
+        "ok": 120,
+        "success_rate": 1.0,
+        "errors": {},
+        "http_status": {},
+        "calls_needing_retry": 0,
+        "billed_calls": 130,
+        "error_samples": {}
+      },
+      "accuracy": {
+        "cases": 20,
+        "route_accuracy": 0.85,
+        "route_accuracy_answered": 0.85,
+        "action_accuracy": 0.75,
+        "fraud_auto_approved": 0,
+        "manual_reviews": 3,
+        "unnecessary_manual_reviews": 0,
+        "actions": {
+          "step_up_verification": 9,
+          "approve": 8,
+          "manual_review": 3
+        },
+        "route_classes": {
+          "per_class": {
+            "approve": {
+              "support": 16,
+              "precision": 1.0,
+              "recall": 0.9375,
+              "f1": 0.967741935483871
+            },
+            "step_up_verification": {
+              "support": 1,
+              "precision": 0.25,
+              "recall": 1.0,
+              "f1": 0.4
+            },
+            "manual_review": {
+              "support": 3,
+              "precision": 1.0,
+              "recall": 0.3333333333333333,
+              "f1": 0.5
+            }
+          },
+          "macro_f1": 0.6225806451612903,
+          "balanced_accuracy": 0.7569444444444445
+        },
+        "action_classes": {
+          "per_class": {
+            "approve": {
+              "support": 13,
+              "precision": 1.0,
+              "recall": 0.6153846153846154,
+              "f1": 0.761904761904762
+            },
+            "step_up_verification": {
+              "support": 4,
+              "precision": 0.4444444444444444,
+              "recall": 1.0,
+              "f1": 0.6153846153846153
+            },
+            "manual_review": {
+              "support": 3,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "macro_f1": 0.7924297924297924,
+          "balanced_accuracy": 0.8717948717948718
+        },
+        "per_archetype_route_accuracy": {
+          "ato_quiet": 1.0,
+          "benign_notes": 1.0,
+          "large_familiar": 1.0,
+          "mule": 0.0,
+          "routine": 1.0,
+          "traveler_no_notice": 1.0,
+          "traveler_with_notice": 0.75
+        },
+        "confusion": {
+          "approve": {
+            "step_up_verification": 1,
+            "approve": 15
+          },
+          "step_up_verification": {
+            "step_up_verification": 1
+          },
+          "manual_review": {
+            "step_up_verification": 2,
+            "manual_review": 1
+          }
+        }
+      },
+      "calibration": {
+        "ece": 0.10399999999999997,
+        "table": [
+          {
+            "bin": "0.0-0.2",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.2-0.4",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.4-0.6",
+            "n": 5,
+            "mean_conf": 0.554,
+            "accuracy": 0.4
+          },
+          {
+            "bin": "0.6-0.8",
+            "n": 3,
+            "mean_conf": 0.6833333333333332,
+            "accuracy": 1.0
+          },
+          {
+            "bin": "0.8-1.0",
+            "n": 12,
+            "mean_conf": 0.9700000000000001,
+            "accuracy": 1.0
+          }
+        ],
+        "brier": 0.1625,
+        "log_loss": 0.25640585793253023,
+        "mean_top_probability": 0.8230000000000001,
+        "share_top_ge_0_95": 0.5,
+        "share_top_ge_0_99": 0.4
+      },
+      "takeover": {
+        "labelled_cases": 18,
+        "accuracy_at_0_5": 1.0,
+        "brier": 0.021983333333333334,
+        "auc": 1.0
+      },
+      "confidence": {
+        "source": {
+          "api": 20
+        },
+        "formula_gap_mean": 0.002,
+        "formula_gap_max": 0.005,
+        "choice_not_highest_probability": 0
+      },
+      "order": {
+        "orders": [
+          "original",
+          "AMS",
+          "SAM",
+          "SMA",
+          "MAS",
+          "reversed"
+        ],
+        "cases_all_orders_ok": 20,
+        "same_route_in_every_order": 0.85,
+        "cases_route_changed": 3,
+        "same_action_in_every_order": 1.0,
+        "distinct_routes_per_case": {
+          "2": 3,
+          "1": 17
+        },
+        "p_approve_range_mean": 0.0595,
+        "p_approve_range_p95": 0.18099999999999997,
+        "max_range_any_route": 0.2,
+        "per_order": {
+          "original": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.6225806451612903,
+            "action_accuracy": 0.75
+          },
+          "AMS": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.6225806451612903,
+            "action_accuracy": 0.75
+          },
+          "SAM": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.6225806451612903,
+            "action_accuracy": 0.75
+          },
+          "SMA": {
+            "cases": 20,
+            "route_accuracy": 0.95,
+            "macro_f1": 0.8222222222222223,
+            "action_accuracy": 0.75
+          },
+          "MAS": {
+            "cases": 20,
+            "route_accuracy": 0.9,
+            "macro_f1": 0.6666666666666666,
+            "action_accuracy": 0.75
+          },
+          "reversed": {
+            "cases": 20,
+            "route_accuracy": 0.95,
+            "macro_f1": 0.8222222222222223,
+            "action_accuracy": 0.75
+          }
+        },
+        "route_accuracy_spread": 0.09999999999999998,
+        "macro_f1_spread": 0.199641577060932,
+        "position": {
+          "mean_probability_by_position": [
+            0.3233333333333333,
+            0.3375,
+            0.33916666666666667
+          ],
+          "bias_vs_one_third": [
+            -0.010000000000000009,
+            0.004166666666666707,
+            0.005833333333333357
+          ],
+          "share_chosen_by_position": [
+            0.325,
+            0.3333333333333333,
+            0.3416666666666667
+          ]
+        },
+        "changed_examples": [
+          {
+            "case": "case-0000",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0005",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "step_up_verification",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0012",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "manual_review",
+              "MAS": "step_up_verification",
+              "reversed": "step_up_verification"
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "pairs": 5,
+        "same_choice_rate": 1.0,
+        "identical_probabilities_rate": 0.4,
+        "mean_max_abs_delta": 0.006000000000000005,
+        "max_abs_delta": 0.010000000000000009,
+        "same_action_rate": 1.0
+      },
+      "served_models": {
+        "typesafe/jev-1.13-20260917": 130
+      },
+      "simulated": false
+    },
+    "openai": {
+      "latency": {
+        "n": 120,
+        "p50": 221.64234999218024,
+        "p90": 327.5951599964174,
+        "p95": 380.63292999868276,
+        "p99": 423.0624160042498,
+        "mean": 237.2702983348669,
+        "min": 155.1505000097677,
+        "max": 463.81230000406504,
+        "p95_including_retries": 380.6397250198642,
+        "server_reported": null
+      },
+      "cost": {
+        "billed_in_run_usd": 0.007942000000000001,
+        "provider_reported_usd": 0.007942,
+        "provider_reported_calls": 130,
+        "per_call_usd": 6.1115e-05,
+        "per_1k_decisions_usd": 0.061115,
+        "per_1m_decisions_usd": 61.115
+      },
+      "tokens": {
+        "input_per_call": 611.15,
+        "output_per_call": 0.0,
+        "input_total": 79420,
+        "output_total": 0
+      },
+      "reliability": {
+        "calls": 130,
+        "measure_calls": 120,
+        "ok": 120,
+        "success_rate": 1.0,
+        "errors": {},
+        "http_status": {},
+        "calls_needing_retry": 0,
+        "billed_calls": 130,
+        "error_samples": {}
+      },
+      "accuracy": {
+        "cases": 20,
+        "route_accuracy": 0.8,
+        "route_accuracy_answered": 0.8,
+        "action_accuracy": 0.95,
+        "fraud_auto_approved": 0,
+        "manual_reviews": 3,
+        "unnecessary_manual_reviews": 0,
+        "actions": {
+          "approve": 12,
+          "step_up_verification": 5,
+          "manual_review": 3
+        },
+        "route_classes": {
+          "per_class": {
+            "approve": {
+              "support": 16,
+              "precision": 1.0,
+              "recall": 0.875,
+              "f1": 0.9333333333333333
+            },
+            "step_up_verification": {
+              "support": 1,
+              "precision": 0.2,
+              "recall": 1.0,
+              "f1": 0.33333333333333337
+            },
+            "manual_review": {
+              "support": 3,
+              "precision": 1.0,
+              "recall": 0.3333333333333333,
+              "f1": 0.5
+            }
+          },
+          "macro_f1": 0.5888888888888889,
+          "balanced_accuracy": 0.7361111111111112
+        },
+        "action_classes": {
+          "per_class": {
+            "approve": {
+              "support": 13,
+              "precision": 1.0,
+              "recall": 0.9230769230769231,
+              "f1": 0.9600000000000001
+            },
+            "step_up_verification": {
+              "support": 4,
+              "precision": 0.8,
+              "recall": 1.0,
+              "f1": 0.888888888888889
+            },
+            "manual_review": {
+              "support": 3,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "macro_f1": 0.9496296296296297,
+          "balanced_accuracy": 0.9743589743589745
+        },
+        "per_archetype_route_accuracy": {
+          "ato_quiet": 1.0,
+          "benign_notes": 0.0,
+          "large_familiar": 0.6666666666666666,
+          "mule": 0.0,
+          "routine": 1.0,
+          "traveler_no_notice": 1.0,
+          "traveler_with_notice": 1.0
+        },
+        "confusion": {
+          "approve": {
+            "approve": 14,
+            "step_up_verification": 2
+          },
+          "step_up_verification": {
+            "step_up_verification": 1
+          },
+          "manual_review": {
+            "step_up_verification": 2,
+            "manual_review": 1
+          }
+        }
+      },
+      "calibration": {
+        "ece": 0.13,
+        "table": [
+          {
+            "bin": "0.0-0.2",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.2-0.4",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.4-0.6",
+            "n": 3,
+            "mean_conf": 0.5433333333333333,
+            "accuracy": 0.3333333333333333
+          },
+          {
+            "bin": "0.6-0.8",
+            "n": 3,
+            "mean_conf": 0.7066666666666667,
+            "accuracy": 0.3333333333333333
+          },
+          {
+            "bin": "0.8-1.0",
+            "n": 14,
+            "mean_conf": 0.9392857142857143,
+            "accuracy": 1.0
+          }
+        ],
+        "brier": 0.20248,
+        "log_loss": 0.30735270225745726,
+        "mean_top_probability": 0.845,
+        "share_top_ge_0_95": 0.4,
+        "share_top_ge_0_99": 0.1
+      },
+      "takeover": {
+        "labelled_cases": 18,
+        "accuracy_at_0_5": 1.0,
+        "brier": 0.01575,
+        "auc": 1.0
+      },
+      "confidence": {
+        "source": {
+          "api": 20
+        },
+        "formula_gap_mean": 0.0025,
+        "formula_gap_max": 0.005,
+        "choice_not_highest_probability": 0
+      },
+      "order": {
+        "orders": [
+          "original",
+          "AMS",
+          "SAM",
+          "SMA",
+          "MAS",
+          "reversed"
+        ],
+        "cases_all_orders_ok": 20,
+        "same_route_in_every_order": 0.75,
+        "cases_route_changed": 5,
+        "same_action_in_every_order": 0.7,
+        "distinct_routes_per_case": {
+          "2": 5,
+          "1": 15
+        },
+        "p_approve_range_mean": 0.2405,
+        "p_approve_range_p95": 0.7345,
+        "max_range_any_route": 0.83,
+        "per_order": {
+          "original": {
+            "cases": 20,
+            "route_accuracy": 0.8,
+            "macro_f1": 0.5888888888888889,
+            "action_accuracy": 0.95
+          },
+          "AMS": {
+            "cases": 20,
+            "route_accuracy": 0.8,
+            "macro_f1": 0.5888888888888889,
+            "action_accuracy": 0.9
+          },
+          "SAM": {
+            "cases": 20,
+            "route_accuracy": 0.65,
+            "macro_f1": 0.5123456790123456,
+            "action_accuracy": 0.65
+          },
+          "SMA": {
+            "cases": 20,
+            "route_accuracy": 0.65,
+            "macro_f1": 0.5123456790123456,
+            "action_accuracy": 0.75
+          },
+          "MAS": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.7111111111111111,
+            "action_accuracy": 0.95
+          },
+          "reversed": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.7111111111111111,
+            "action_accuracy": 0.85
+          }
+        },
+        "route_accuracy_spread": 0.19999999999999996,
+        "macro_f1_spread": 0.19876543209876552,
+        "position": {
+          "mean_probability_by_position": [
+            0.3919166666666667,
+            0.319,
+            0.2890833333333333
+          ],
+          "bias_vs_one_third": [
+            0.058583333333333376,
+            -0.014333333333333309,
+            -0.04425000000000001
+          ],
+          "share_chosen_by_position": [
+            0.4,
+            0.3,
+            0.3
+          ]
+        },
+        "changed_examples": [
+          {
+            "case": "case-0000",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0005",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0013",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "approve",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0017",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0018",
+            "archetype": "large_familiar",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "pairs": 5,
+        "same_choice_rate": 1.0,
+        "identical_probabilities_rate": 1.0,
+        "mean_max_abs_delta": 0.0,
+        "max_abs_delta": 0.0,
+        "same_action_rate": 1.0
+      },
+      "served_models": {
+        "openai/gpt-6-luna-decisions-20261006": 130
+      },
+      "simulated": false
+    },
+    "microsoft": {
+      "latency": {
+        "n": 120,
+        "p50": 302.3844500130508,
+        "p90": 396.28056999936246,
+        "p95": 460.7989299925975,
+        "p99": 572.7901539817685,
+        "mean": 321.1344008319429,
+        "min": 227.20829999889247,
+        "max": 750.2644000051077,
+        "p95_including_retries": 460.8047550078481,
+        "server_reported": null
+      },
+      "cost": {
+        "billed_in_run_usd": 0.002307144,
+        "provider_reported_usd": 0.002307144,
+        "provider_reported_calls": 130,
+        "per_call_usd": 1.77576e-05,
+        "per_1k_decisions_usd": 0.017757600000000002,
+        "per_1m_decisions_usd": 17.7576
+      },
+      "tokens": {
+        "input_per_call": 422.8,
+        "output_per_call": 2.0,
+        "input_total": 54932,
+        "output_total": 260
+      },
+      "reliability": {
+        "calls": 130,
+        "measure_calls": 120,
+        "ok": 120,
+        "success_rate": 1.0,
+        "errors": {},
+        "http_status": {},
+        "calls_needing_retry": 0,
+        "billed_calls": 130,
+        "error_samples": {}
+      },
+      "accuracy": {
+        "cases": 20,
+        "route_accuracy": 0.9,
+        "route_accuracy_answered": 0.9,
+        "action_accuracy": 0.85,
+        "fraud_auto_approved": 0,
+        "manual_reviews": 3,
+        "unnecessary_manual_reviews": 1,
+        "actions": {
+          "approve": 12,
+          "manual_review": 3,
+          "step_up_verification": 5
+        },
+        "route_classes": {
+          "per_class": {
+            "approve": {
+              "support": 16,
+              "precision": 1.0,
+              "recall": 0.9375,
+              "f1": 0.967741935483871
+            },
+            "step_up_verification": {
+              "support": 1,
+              "precision": 0.3333333333333333,
+              "recall": 1.0,
+              "f1": 0.5
+            },
+            "manual_review": {
+              "support": 3,
+              "precision": 1.0,
+              "recall": 0.6666666666666666,
+              "f1": 0.8
+            }
+          },
+          "macro_f1": 0.7559139784946236,
+          "balanced_accuracy": 0.8680555555555555
+        },
+        "action_classes": {
+          "per_class": {
+            "approve": {
+              "support": 13,
+              "precision": 1.0,
+              "recall": 0.9230769230769231,
+              "f1": 0.9600000000000001
+            },
+            "step_up_verification": {
+              "support": 4,
+              "precision": 0.6,
+              "recall": 0.75,
+              "f1": 0.6666666666666665
+            },
+            "manual_review": {
+              "support": 3,
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "f1": 0.6666666666666666
+            }
+          },
+          "macro_f1": 0.7644444444444444,
+          "balanced_accuracy": 0.7799145299145299
+        },
+        "per_archetype_route_accuracy": {
+          "ato_quiet": 1.0,
+          "benign_notes": 1.0,
+          "large_familiar": 0.6666666666666666,
+          "mule": 0.5,
+          "routine": 1.0,
+          "traveler_no_notice": 1.0,
+          "traveler_with_notice": 1.0
+        },
+        "confusion": {
+          "approve": {
+            "approve": 15,
+            "step_up_verification": 1
+          },
+          "step_up_verification": {
+            "step_up_verification": 1
+          },
+          "manual_review": {
+            "manual_review": 2,
+            "step_up_verification": 1
+          }
+        }
+      },
+      "calibration": {
+        "ece": 0.09870786265011297,
+        "table": [
+          {
+            "bin": "0.0-0.2",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.2-0.4",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.4-0.6",
+            "n": 1,
+            "mean_conf": 0.49418889488982193,
+            "accuracy": 1.0
+          },
+          {
+            "bin": "0.6-0.8",
+            "n": 3,
+            "mean_conf": 0.7045017958507257,
+            "accuracy": 0.3333333333333333
+          },
+          {
+            "bin": "0.8-1.0",
+            "n": 16,
+            "mean_conf": 0.977822452478756,
+            "accuracy": 1.0
+          }
+        ],
+        "brier": 0.13384738811540692,
+        "log_loss": 0.2001638147720465,
+        "mean_top_probability": 0.9126426761051046,
+        "share_top_ge_0_95": 0.65,
+        "share_top_ge_0_99": 0.45
+      },
+      "takeover": {
+        "labelled_cases": 18,
+        "accuracy_at_0_5": 0.9444444444444444,
+        "brier": 0.03936647655931553,
+        "auc": 1.0
+      },
+      "confidence": {
+        "source": {
+          "api": 20
+        },
+        "formula_gap_mean": 0.0,
+        "formula_gap_max": 0.0,
+        "choice_not_highest_probability": 1
+      },
+      "order": {
+        "orders": [
+          "original",
+          "AMS",
+          "SAM",
+          "SMA",
+          "MAS",
+          "reversed"
+        ],
+        "cases_all_orders_ok": 20,
+        "same_route_in_every_order": 0.95,
+        "cases_route_changed": 1,
+        "same_action_in_every_order": 1.0,
+        "distinct_routes_per_case": {
+          "1": 19,
+          "2": 1
+        },
+        "p_approve_range_mean": 0.008081962479168517,
+        "p_approve_range_p95": 0.025039129953014577,
+        "max_range_any_route": 0.12321819955743846,
+        "per_order": {
+          "original": {
+            "cases": 20,
+            "route_accuracy": 0.9,
+            "macro_f1": 0.7559139784946236,
+            "action_accuracy": 0.85
+          },
+          "AMS": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.6225806451612903,
+            "action_accuracy": 0.85
+          },
+          "SAM": {
+            "cases": 20,
+            "route_accuracy": 0.9,
+            "macro_f1": 0.7559139784946236,
+            "action_accuracy": 0.85
+          },
+          "SMA": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.6225806451612903,
+            "action_accuracy": 0.85
+          },
+          "MAS": {
+            "cases": 20,
+            "route_accuracy": 0.9,
+            "macro_f1": 0.7559139784946236,
+            "action_accuracy": 0.85
+          },
+          "reversed": {
+            "cases": 20,
+            "route_accuracy": 0.85,
+            "macro_f1": 0.6225806451612903,
+            "action_accuracy": 0.85
+          }
+        },
+        "route_accuracy_spread": 0.050000000000000044,
+        "macro_f1_spread": 0.1333333333333333,
+        "position": {
+          "mean_probability_by_position": [
+            0.3340602937593927,
+            0.3323764897883495,
+            0.3335632164522578
+          ],
+          "bias_vs_one_third": [
+            0.0007269604260594087,
+            -0.0009568435449838208,
+            0.00022988311892446767
+          ],
+          "share_chosen_by_position": [
+            0.3333333333333333,
+            0.325,
+            0.3416666666666667
+          ]
+        },
+        "changed_examples": [
+          {
+            "case": "case-0005",
+            "archetype": "mule",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "step_up_verification",
+              "SAM": "manual_review",
+              "SMA": "step_up_verification",
+              "MAS": "manual_review",
+              "reversed": "step_up_verification"
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "pairs": 5,
+        "same_choice_rate": 1.0,
+        "identical_probabilities_rate": 0.2,
+        "mean_max_abs_delta": 0.0004939976464535271,
+        "max_abs_delta": 0.002214289222953414,
+        "same_action_rate": 1.0
+      },
+      "served_models": {
+        "microsoft/microsoft-decision-1-20261009": 130
+      },
+      "simulated": false
+    }
+  },
+  "pairs": [
+    {
+      "a": "jev",
+      "b": "openai",
+      "cases": 20,
+      "both_right": 15,
+      "only_a_right": 2,
+      "only_b_right": 1,
+      "neither_right": 2,
+      "macro_f1": {
+        "a": 0.6225806451612903,
+        "b": 0.5888888888888889,
+        "difference": 0.033691756272401396,
+        "difference_ci95": [
+          -0.07761537763253455,
+          0.1728930312982036
+        ],
+        "accuracy_difference": 0.04999999999999993,
+        "accuracy_difference_ci95": [
+          -0.1,
+          0.25
+        ],
+        "bootstrap_resamples": 2000
+      },
+      "route_agreement": 0.85,
+      "action_agreement": 0.8,
+      "a_faster_share": 0.3,
+      "disagreements": [
+        {
+          "case": "case-0000",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0009",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0011",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        }
+      ]
+    },
+    {
+      "a": "jev",
+      "b": "microsoft",
+      "cases": 20,
+      "both_right": 16,
+      "only_a_right": 1,
+      "only_b_right": 2,
+      "neither_right": 1,
+      "macro_f1": {
+        "a": 0.6225806451612903,
+        "b": 0.7559139784946236,
+        "difference": -0.1333333333333333,
+        "difference_ci95": [
+          -0.5,
+          0.10368663594470046
+        ],
+        "accuracy_difference": -0.050000000000000044,
+        "accuracy_difference_ci95": [
+          -0.2,
+          0.1
+        ],
+        "bootstrap_resamples": 2000
+      },
+      "route_agreement": 0.85,
+      "action_agreement": 0.7,
+      "a_faster_share": 0.85,
+      "disagreements": [
+        {
+          "case": "case-0000",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0005",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0011",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        }
+      ]
+    },
+    {
+      "a": "openai",
+      "b": "microsoft",
+      "cases": 20,
+      "both_right": 16,
+      "only_a_right": 0,
+      "only_b_right": 2,
+      "neither_right": 2,
+      "macro_f1": {
+        "a": 0.5888888888888889,
+        "b": 0.7559139784946236,
+        "difference": -0.1670250896057347,
+        "difference_ci95": [
+          -0.5142642642642643,
+          0.0
+        ],
+        "accuracy_difference": -0.09999999999999998,
+        "accuracy_difference_ci95": [
+          -0.25,
+          0.0
+        ],
+        "bootstrap_resamples": 2000
+      },
+      "route_agreement": 0.9,
+      "action_agreement": 0.9,
+      "a_faster_share": 0.95,
+      "disagreements": [
+        {
+          "case": "case-0005",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0009",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        }
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "case": "case-0000",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0005",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0009",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0011",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    }
+  ],
+  "ranking": {
+    "macro_f1": [
+      "microsoft",
+      "jev",
+      "openai"
+    ],
+    "route_accuracy": [
+      "microsoft",
+      "jev",
+      "openai"
+    ],
+    "latency_p50": [
+      "openai",
+      "jev",
+      "microsoft"
+    ],
+    "cost_per_1k": [
+      "microsoft",
+      "jev",
+      "openai"
+    ],
+    "ece": [
+      "microsoft",
+      "jev",
+      "openai"
+    ]
+  },
+  "cases": 20,
+  "archetypes": {
+    "traveler_with_notice": 4,
+    "routine": 8,
+    "traveler_no_notice": 1,
+    "mule": 2,
+    "benign_notes": 1,
+    "ato_quiet": 1,
+    "large_familiar": 3
+  }
+}

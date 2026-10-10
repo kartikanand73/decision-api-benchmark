@@ -1,0 +1,43 @@
+
+LIVE RUN · 500 cases · 241.8s
+
+TypeSafe Jev (typesafe/jev-1.13-20260917)
+  latency  p50 229 ms  p95 302 ms  p99 379 ms  (n=3000)
+  cost     $0.0324 per 1k decisions · $0.0991 this run (provider-reported $0.0991) · 773 input tokens/call
+  accuracy route 93.4%  action 82.4%  fraud approved 0  manual reviews 105
+  calib    ECE 0.080  Brier 0.117  top prob ≥0.95: 52%  takeover AUC 1.000
+  reliab.  3000/3000 ok  errors 0  retried 0
+  balance  macro-F1 90.4%  balanced accuracy 93.1%  F1 approve 97%  F1 step 82%  F1 manual 92%
+  order    6 orders: same route in every order 91.6% (42 of 500 answered in all orders changed)  same action 91.8%  P(approve) range mean 0.047  macro-F1 spread 8.2%  position bias -0.006, +0.005, +0.001
+  repeat   same choice 92%  identical probs 56%  max Δp 0.130
+
+OpenAI Decisions (openai/gpt-6-luna-decisions-20261006)
+  latency  p50 224 ms  p95 340 ms  p99 500 ms  (n=3000)
+  cost     $0.0611 per 1k decisions · $0.1866 this run (provider-reported $0.1866) · 611 input tokens/call
+  accuracy route 77.4%  action 73.6%  fraud approved 0  manual reviews 112
+  calib    ECE 0.041  Brier 0.296  top prob ≥0.95: 32%  takeover AUC 1.000
+  reliab.  3000/3000 ok  errors 0  retried 0
+  balance  macro-F1 71.4%  balanced accuracy 77.2%  F1 approve 89%  F1 step 57%  F1 manual 68%
+  order    6 orders: same route in every order 64.2% (179 of 500 answered in all orders changed)  same action 84.6%  P(approve) range mean 0.194  macro-F1 spread 25.9%  position bias +0.048, -0.002, -0.047
+  repeat   same choice 100%  identical probs 100%  max Δp 0.000
+
+Microsoft Decision-1 (microsoft/microsoft-decision-1-20261009)
+  latency  p50 301 ms  p95 382 ms  p99 461 ms  (n=3000)
+  cost     $0.0178 per 1k decisions · $0.0542 this run (provider-reported $0.0542) · 423 input tokens/call
+  accuracy route 91.2%  action 78.2%  fraud approved 0  manual reviews 146
+  calib    ECE 0.057  Brier 0.115  top prob ≥0.95: 49%  takeover AUC 1.000
+  reliab.  3000/3000 ok  errors 0  retried 0
+  balance  macro-F1 87.7%  balanced accuracy 91.1%  F1 approve 96%  F1 step 78%  F1 manual 89%
+  order    6 orders: same route in every order 97.6% (12 of 500 answered in all orders changed)  same action 97.8%  P(approve) range mean 0.012  macro-F1 spread 1.2%  position bias +0.000, -0.000, -0.000
+  repeat   same choice 100%  identical probs 40%  max Δp 0.080
+
+Jev vs OpenAI on 500 cases: both right 375, only Jev 92, only OpenAI 12, neither 21 · route agreement 79% · Jev faster on 47% of paired calls
+  macro-F1 Jev 90.4% vs OpenAI 71.4%: difference +19.0% (95% CI +14.8% to +23.2%, excludes 0)
+
+Jev vs Microsoft on 500 cases: both right 431, only Jev 36, only Microsoft 25, neither 8 · route agreement 88% · Jev faster on 93% of paired calls
+  macro-F1 Jev 90.4% vs Microsoft 87.7%: difference +2.7% (95% CI -1.4% to +6.7%, includes 0)
+
+OpenAI vs Microsoft on 500 cases: both right 381, only OpenAI 6, only Microsoft 75, neither 38 · route agreement 84% · OpenAI faster on 87% of paired calls
+  macro-F1 OpenAI 71.4% vs Microsoft 87.7%: difference -16.3% (95% CI -20.3% to -12.3%, excludes 0)
+
+ranking  macro_f1: Jev > Microsoft > OpenAI | route_accuracy: Jev > Microsoft > OpenAI | latency_p50: OpenAI > Jev > Microsoft | cost_per_1k: Microsoft > Jev > OpenAI | ece: OpenAI > Microsoft > Jev

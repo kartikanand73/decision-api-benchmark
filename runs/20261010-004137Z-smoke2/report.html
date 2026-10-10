@@ -1,0 +1,266 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Decision API Benchmark</title><style>
+:root{color-scheme:light;--page:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--grid:#e1e0d9;
+--ring:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--warn-bg:#fff4dc;--warn-ink:#6b4a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;
+--ink:#fff;--ink2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--ring:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--warn-bg:#3a2d0b;--warn-ink:#f5d58a}}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;
+--ring:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--warn-bg:#3a2d0b;--warn-ink:#f5d58a}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 64px}h1{font-size:24px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 8px}
+.sub{color:var(--ink2);margin:0 0 16px}.banner{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:12px 14px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.card{background:var(--surface);border-radius:10px;box-shadow:0 0 0 1px var(--ring);padding:16px;min-width:0}
+.card h3{font-size:14px;margin:0 0 2px}.card p{color:var(--ink2);font-size:12px;margin:0 0 12px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink2);margin:8px 0 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.bars{display:grid;grid-template-columns:auto 1fr auto;gap:2px 10px;align-items:center;font-size:12px}
+.bars .k{color:var(--ink2);white-space:nowrap}.bars .v{color:var(--ink);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.track{height:14px;position:relative}.bar{height:14px;border-radius:0 4px 4px 0;min-width:2px}
+.gap{grid-column:1/-1;height:8px}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{color:var(--ink2);font-weight:500;font-size:12px}td.n{text-align:right;font-variant-numeric:tabular-nums}
+td.sec{color:var(--muted);font-size:12px}.scroll{overflow-x:auto}
+#tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--ring),0 4px 14px rgba(0,0,0,.15);
+border-radius:6px;padding:6px 9px;font-size:12px;display:none;z-index:9}
+details summary{cursor:pointer;color:var(--ink2);font-size:13px;margin-top:12px}code{font-size:12px}
+</style></head><body><main>
+<h1>TypeSafe Jev vs OpenAI Decisions vs Microsoft Decision-1</h1>
+<p class="sub">2026-10-10 00:41 UTC · 20 cases · TypeSafe Jev: typesafe/jev-1.13-20260917 · OpenAI Decisions: openai/gpt-6-luna-decisions-20261006 · Microsoft Decision-1: microsoft/microsoft-decision-1-20261009 · rubric 1.1</p>
+<div class="legend"><span><i style="background:var(--s1)"></i>TypeSafe Jev</span><span><i style="background:var(--s2)"></i>OpenAI Decisions</span><span><i style="background:var(--s3)"></i>Microsoft Decision-1</span></div>
+<div class="grid" style="margin-top:12px"><div class="card"><h3>Latency</h3><p>Wall-clock per successful call, warm-up excluded. Lower is better.</p><div class="bars"><div class="k">p50</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;p50: 229 ms"><div class="bar" style="width:49.7%;background:var(--s1)"></div></div><div class="v">229 ms</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;p50: 222 ms"><div class="bar" style="width:48.1%;background:var(--s2)"></div></div><div class="v">222 ms</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;p50: 302 ms"><div class="bar" style="width:65.6%;background:var(--s3)"></div></div><div class="v">302 ms</div><div class="gap"></div><div class="k">p95</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;p95: 335 ms"><div class="bar" style="width:72.7%;background:var(--s1)"></div></div><div class="v">335 ms</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;p95: 381 ms"><div class="bar" style="width:82.6%;background:var(--s2)"></div></div><div class="v">381 ms</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;p95: 461 ms"><div class="bar" style="width:100.0%;background:var(--s3)"></div></div><div class="v">461 ms</div></div></div><div class="card"><h3>Cost per 1,000 decisions</h3><p>List price × reported input tokens. Output is free on all three.</p><div class="bars"><div class="k">per 1k</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;per 1k: $0.0325"><div class="bar" style="width:53.1%;background:var(--s1)"></div></div><div class="v">$0.0325</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;per 1k: $0.0611"><div class="bar" style="width:100.0%;background:var(--s2)"></div></div><div class="v">$0.0611</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;per 1k: $0.0178"><div class="bar" style="width:29.1%;background:var(--s3)"></div></div><div class="v">$0.0178</div></div></div><div class="card"><h3>Accuracy</h3><p>Against analyst labels, original option order. Higher is better.</p><div class="bars"><div class="k">route</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;route: 85.0%"><div class="bar" style="width:89.5%;background:var(--s1)"></div></div><div class="v">85.0%</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;route: 80.0%"><div class="bar" style="width:84.2%;background:var(--s2)"></div></div><div class="v">80.0%</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;route: 90.0%"><div class="bar" style="width:94.7%;background:var(--s3)"></div></div><div class="v">90.0%</div><div class="gap"></div><div class="k">route macro-F1</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;route macro-F1: 62.3%"><div class="bar" style="width:65.5%;background:var(--s1)"></div></div><div class="v">62.3%</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;route macro-F1: 58.9%"><div class="bar" style="width:62.0%;background:var(--s2)"></div></div><div class="v">58.9%</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;route macro-F1: 75.6%"><div class="bar" style="width:79.6%;background:var(--s3)"></div></div><div class="v">75.6%</div><div class="gap"></div><div class="k">final action</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;final action: 75.0%"><div class="bar" style="width:78.9%;background:var(--s1)"></div></div><div class="v">75.0%</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;final action: 95.0%"><div class="bar" style="width:100.0%;background:var(--s2)"></div></div><div class="v">95.0%</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;final action: 85.0%"><div class="bar" style="width:89.5%;background:var(--s3)"></div></div><div class="v">85.0%</div></div></div><div class="card"><h3>Calibration error (ECE)</h3><p>Gap between stated and actual confidence. Lower is better.</p><div class="bars"><div class="k">ECE</div><div class="track" data-tip="&lt;b&gt;TypeSafe Jev&lt;/b&gt;&lt;br&gt;ECE: 0.104"><div class="bar" style="width:80.0%;background:var(--s1)"></div></div><div class="v">0.104</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;OpenAI Decisions&lt;/b&gt;&lt;br&gt;ECE: 0.130"><div class="bar" style="width:100.0%;background:var(--s2)"></div></div><div class="v">0.130</div><div class="k"></div><div class="track" data-tip="&lt;b&gt;Microsoft Decision-1&lt;/b&gt;&lt;br&gt;ECE: 0.099"><div class="bar" style="width:75.9%;background:var(--s3)"></div></div><div class="v">0.099</div></div></div></div>
+<h2>Headline</h2><div class="card"><div class="scroll"><table><thead><tr><th></th><th>Metric</th><th style="text-align:right">TypeSafe Jev</th><th style="text-align:right">OpenAI Decisions</th><th style="text-align:right">Microsoft Decision-1</th></tr></thead><tbody><tr><td class="sec">Latency</td><td class="">p50</td><td class="n">229 ms</td><td class="n">222 ms</td><td class="n">302 ms</td></tr><tr><td class="sec">Latency</td><td class="">p95</td><td class="n">335 ms</td><td class="n">381 ms</td><td class="n">461 ms</td></tr><tr><td class="sec">Latency</td><td class="">p99</td><td class="n">390 ms</td><td class="n">423 ms</td><td class="n">573 ms</td></tr><tr><td class="sec">Latency</td><td class="">p95 including retries</td><td class="n">335 ms</td><td class="n">381 ms</td><td class="n">461 ms</td></tr><tr><td class="sec">Latency</td><td class="">server-reported processing p50</td><td class="n">not reported</td><td class="n">not reported</td><td class="n">not reported</td></tr><tr><td class="sec">Cost</td><td class="">per 1,000 decisions (list price)</td><td class="n">$0.0325</td><td class="n">$0.0611</td><td class="n">$0.0178</td></tr><tr><td class="sec">Cost</td><td class="">per 1 million decisions</td><td class="n">$32.45</td><td class="n">$61.12</td><td class="n">$17.76</td></tr><tr><td class="sec">Cost</td><td class="">billed in this run</td><td class="n">$0.00422 (provider says $0.00422)</td><td class="n">$0.00794 (provider says $0.00794)</td><td class="n">$0.00231 (provider says $0.00231)</td></tr><tr><td class="sec">Cost</td><td class="">input tokens per call</td><td class="n">773</td><td class="n">611</td><td class="n">423</td></tr><tr><td class="sec">Cost</td><td class="">output tokens per call</td><td class="n">63.7</td><td class="n">0.0</td><td class="n">2.0</td></tr><tr><td class="sec">Accuracy</td><td class="">route matches analyst label (all cases)</td><td class="n">85.0%</td><td class="n">80.0%</td><td class="n">90.0%</td></tr><tr><td class="sec">Accuracy</td><td class="">route accuracy (answered cases only)</td><td class="n">85.0%</td><td class="n">80.0%</td><td class="n">90.0%</td></tr><tr><td class="sec">Accuracy</td><td class="">route macro-F1 (each class weighted equally)</td><td class="n">62.3%</td><td class="n">58.9%</td><td class="n">75.6%</td></tr><tr><td class="sec">Accuracy</td><td class="">route balanced accuracy (mean recall per class)</td><td class="n">75.7%</td><td class="n">73.6%</td><td class="n">86.8%</td></tr><tr><td class="sec">Accuracy</td><td class="">final action matches label (same policy)</td><td class="n">75.0%</td><td class="n">95.0%</td><td class="n">85.0%</td></tr><tr><td class="sec">Accuracy</td><td class="">final action macro-F1</td><td class="n">79.2%</td><td class="n">95.0%</td><td class="n">76.4%</td></tr><tr><td class="sec">Accuracy</td><td class="">fraud auto-approved</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr><tr><td class="sec">Accuracy</td><td class="">manual reviews (unnecessary)</td><td class="n">3 (0)</td><td class="n">3 (0)</td><td class="n">3 (1)</td></tr><tr><td class="sec">Calibration</td><td class="">ECE (lower is better)</td><td class="n">0.104</td><td class="n">0.130</td><td class="n">0.099</td></tr><tr><td class="sec">Calibration</td><td class="">Brier score (lower is better)</td><td class="n">0.163</td><td class="n">0.202</td><td class="n">0.134</td></tr><tr><td class="sec">Calibration</td><td class="">log loss (lower is better)</td><td class="n">0.256</td><td class="n">0.307</td><td class="n">0.200</td></tr><tr><td class="sec">Calibration</td><td class="">top probability ≥ 0.95</td><td class="n">50%</td><td class="n">40%</td><td class="n">65%</td></tr><tr><td class="sec">Calibration</td><td class="">takeover question AUC</td><td class="n">1.000</td><td class="n">1.000</td><td class="n">1.000</td></tr><tr><td class="sec">Reliability</td><td class="">successful calls</td><td class="n">120 / 120</td><td class="n">120 / 120</td><td class="n">120 / 120</td></tr><tr><td class="sec">Reliability</td><td class="">errors by kind</td><td class="n">none</td><td class="n">none</td><td class="n">none</td></tr><tr><td class="sec">Reliability</td><td class="">calls that needed a retry</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr><tr><td class="sec">Robustness</td><td class="">same route in every option order</td><td class="n">85.0% (3 of 20 changed, 6 orders)</td><td class="n">75.0% (5 of 20 changed, 6 orders)</td><td class="n">95.0% (1 of 20 changed, 6 orders)</td></tr><tr><td class="sec">Robustness</td><td class="">same final action in every option order</td><td class="n">100.0%</td><td class="n">70.0%</td><td class="n">100.0%</td></tr><tr><td class="sec">Robustness</td><td class="">macro-F1 spread across option orders</td><td class="n">20.0%</td><td class="n">19.9%</td><td class="n">13.3%</td></tr><tr><td class="sec">Robustness</td><td class="">same answer when asked twice</td><td class="n">100% same choice, 40% identical probabilities</td><td class="n">100% same choice, 100% identical probabilities</td><td class="n">100% same choice, 20% identical probabilities</td></tr></tbody></table></div></div>
+<h2>Same cases, side by side</h2><div class="card" style="margin-bottom:16px"><div class="scroll"><table><thead><tr><th>A vs B</th><th style="text-align:right">Both right</th><th style="text-align:right">Only A</th><th style="text-align:right">Only B</th><th style="text-align:right">Macro-F1 A / B</th><th style="text-align:right">Difference (95% CI)</th></tr></thead><tbody><tr><td class="sec">TypeSafe Jev vs OpenAI Decisions</td><td class="n">15</td><td class="n">2</td><td class="n">1</td><td class="n">62.3% / 58.9%</td><td class="n">+3.4% (-7.8% to +17.3%)</td></tr><tr><td class="sec">TypeSafe Jev vs Microsoft Decision-1</td><td class="n">16</td><td class="n">1</td><td class="n">2</td><td class="n">62.3% / 75.6%</td><td class="n">-13.3% (-50.0% to +10.4%)</td></tr><tr><td class="sec">OpenAI Decisions vs Microsoft Decision-1</td><td class="n">16</td><td class="n">0</td><td class="n">2</td><td class="n">58.9% / 75.6%</td><td class="n">-16.7% (-51.4% to +0.0%)</td></tr></tbody></table></div></div><div class="card"><div class="scroll"><table><thead><tr><th>Case type</th><th style="text-align:right">Cases</th><th style="text-align:right">TypeSafe Jev</th><th style="text-align:right">OpenAI Decisions</th><th style="text-align:right">Microsoft Decision-1</th></tr></thead><tbody><tr><td class="sec">ato_quiet</td><td class="n">1</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr><tr><td class="sec">benign_notes</td><td class="n">1</td><td class="n">100%</td><td class="n">0%</td><td class="n">100%</td></tr><tr><td class="sec">large_familiar</td><td class="n">3</td><td class="n">100%</td><td class="n">67%</td><td class="n">67%</td></tr><tr><td class="sec">mule</td><td class="n">2</td><td class="n">0%</td><td class="n">0%</td><td class="n">50%</td></tr><tr><td class="sec">routine</td><td class="n">8</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr><tr><td class="sec">traveler_no_notice</td><td class="n">1</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr><tr><td class="sec">traveler_with_notice</td><td class="n">4</td><td class="n">75%</td><td class="n">100%</td><td class="n">100%</td></tr></tbody></table></div></div>
+<details><summary>Full report (same content as report.md)</summary><pre style="white-space:pre-wrap;font-size:12px;color:var(--ink2)"># TypeSafe Jev vs OpenAI Decisions vs Microsoft Decision-1: run report
+
+## Run
+
+| Item | Value |
+| --- | --- |
+| Started (UTC) | 2026-10-10T00:41:37.502454+00:00 |
+| Duration | 14.5 s |
+| Command | `python -m compare.run --limit 20 --repeat 5 --label smoke2 --yes` |
+| Cases | 20 (dataset sha256 8e337b334f20396d) |
+| Rubric | version 1.1 · sha256 77829124a289f6b1 |
+| Policy | withdrawal-policy/1.0.0 · approve &gt; 0.8, confidence ≥ 0.5, review ≥ 0.3, takeover ≥ 0.5, ceiling $5,000 |
+| TypeSafe Jev | https://openrouter.ai/api/v1/systemone (systemone) · model requested `typesafe/jev-1.13` · served `typesafe/jev-1.13-20260917` · $0.042/M input tokens |
+| OpenAI Decisions | https://openrouter.ai/api/v1/systemone (systemone (OpenRouter)) · model requested `openai/gpt-6-luna-decisions` · served `openai/gpt-6-luna-decisions-20261006` · $0.1/M input tokens |
+| Microsoft Decision-1 | https://openrouter.ai/api/v1/systemone (systemone) · model requested `microsoft/microsoft-decision-1` · served `microsoft/microsoft-decision-1-20261009` · $0.042/M input tokens |
+| Concurrency / timeout / warm-up | 4 per provider / 30 s / 5 calls |
+| Client location | not recorded (add --location) |
+| Code version | not a git checkout |
+| Environment | Python 3.14.5 · Windows-11-10.0.26200-SP0 |
+
+## Headline
+
+|  | Metric | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+| --- | --- | --- | --- | --- |
+| Latency | p50 | 229 ms | 222 ms | 302 ms |
+| Latency | p95 | 335 ms | 381 ms | 461 ms |
+| Latency | p99 | 390 ms | 423 ms | 573 ms |
+| Latency | p95 including retries | 335 ms | 381 ms | 461 ms |
+| Latency | server-reported processing p50 | not reported | not reported | not reported |
+| Cost | per 1,000 decisions (list price) | $0.0325 | $0.0611 | $0.0178 |
+| Cost | per 1 million decisions | $32.45 | $61.12 | $17.76 |
+| Cost | billed in this run | $0.00422 (provider says $0.00422) | $0.00794 (provider says $0.00794) | $0.00231 (provider says $0.00231) |
+| Cost | input tokens per call | 773 | 611 | 423 |
+| Cost | output tokens per call | 63.7 | 0.0 | 2.0 |
+| Accuracy | route matches analyst label (all cases) | 85.0% | 80.0% | 90.0% |
+| Accuracy | route accuracy (answered cases only) | 85.0% | 80.0% | 90.0% |
+| Accuracy | route macro-F1 (each class weighted equally) | 62.3% | 58.9% | 75.6% |
+| Accuracy | route balanced accuracy (mean recall per class) | 75.7% | 73.6% | 86.8% |
+| Accuracy | final action matches label (same policy) | 75.0% | 95.0% | 85.0% |
+| Accuracy | final action macro-F1 | 79.2% | 95.0% | 76.4% |
+| Accuracy | fraud auto-approved | 0 | 0 | 0 |
+| Accuracy | manual reviews (unnecessary) | 3 (0) | 3 (0) | 3 (1) |
+| Calibration | ECE (lower is better) | 0.104 | 0.130 | 0.099 |
+| Calibration | Brier score (lower is better) | 0.163 | 0.202 | 0.134 |
+| Calibration | log loss (lower is better) | 0.256 | 0.307 | 0.200 |
+| Calibration | top probability ≥ 0.95 | 50% | 40% | 65% |
+| Calibration | takeover question AUC | 1.000 | 1.000 | 1.000 |
+| Reliability | successful calls | 120 / 120 | 120 / 120 | 120 / 120 |
+| Reliability | errors by kind | none | none | none |
+| Reliability | calls that needed a retry | 0 | 0 | 0 |
+| Robustness | same route in every option order | 85.0% (3 of 20 changed, 6 orders) | 75.0% (5 of 20 changed, 6 orders) | 95.0% (1 of 20 changed, 6 orders) |
+| Robustness | same final action in every option order | 100.0% | 70.0% | 100.0% |
+| Robustness | macro-F1 spread across option orders | 20.0% | 19.9% | 13.3% |
+| Robustness | same answer when asked twice | 100% same choice, 40% identical probabilities | 100% same choice, 100% identical probabilities | 100% same choice, 20% identical probabilities |
+
+## Same cases, side by side
+
+Every pair of providers on the same cases (original option order). **Macro-F1** weights each route equally, so the largest class can&#x27;t dominate (this set has 16 approve, 1 step-up, 3 manual review). The interval is a paired bootstrap over cases (2,000 resamples): if it excludes 0, the gap is not an artefact of which cases happened to be in the dataset.
+
+| A vs B | Both right | Only A | Only B | Neither | Route agreement | Action agreement | Macro-F1 A / B | Difference (95% CI) | Separated? | A faster |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| TypeSafe Jev vs OpenAI Decisions | 15 | 2 | 1 | 2 | 85.0% | 80.0% | 62.3% / 58.9% | +3.4% (-7.8% to +17.3%) | no | 30% |
+| TypeSafe Jev vs Microsoft Decision-1 | 16 | 1 | 2 | 1 | 85.0% | 70.0% | 62.3% / 75.6% | -13.3% (-50.0% to +10.4%) | no | 85% |
+| OpenAI Decisions vs Microsoft Decision-1 | 16 | 0 | 2 | 2 | 90.0% | 90.0% | 58.9% / 75.6% | -16.7% (-51.4% to +0.0%) | no | 95% |
+
+Ranking: **macro f1** Microsoft Decision-1 &gt; TypeSafe Jev &gt; OpenAI Decisions; **route accuracy** Microsoft Decision-1 &gt; TypeSafe Jev &gt; OpenAI Decisions; **latency p50** OpenAI Decisions &gt; TypeSafe Jev &gt; Microsoft Decision-1; **cost per 1k** Microsoft Decision-1 &gt; TypeSafe Jev &gt; OpenAI Decisions; **ece** Microsoft Decision-1 &gt; TypeSafe Jev &gt; OpenAI Decisions.
+
+
+### Per-route precision, recall and F1 (original option order)
+
+| Route | Cases | TypeSafe Jev precision | TypeSafe Jev recall | TypeSafe Jev F1 | OpenAI Decisions precision | OpenAI Decisions recall | OpenAI Decisions F1 | Microsoft Decision-1 precision | Microsoft Decision-1 recall | Microsoft Decision-1 F1 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Approve | 16 | 100% | 94% | 97% | 100% | 88% | 93% | 100% | 94% | 97% |
+| Step-up | 1 | 25% | 100% | 40% | 20% | 100% | 33% | 33% | 100% | 50% |
+| Manual review | 3 | 100% | 33% | 50% | 100% | 33% | 50% | 100% | 67% | 80% |
+
+### Route accuracy by case type
+
+| Case type | Cases | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+| --- | --- | --- | --- | --- |
+| ato_quiet | 1 | 100% | 100% | 100% |
+| benign_notes | 1 | 100% | 0% | 100% |
+| large_familiar | 3 | 100% | 67% | 67% |
+| mule | 2 | 0% | 0% | 50% |
+| routine | 8 | 100% | 100% | 100% |
+| traveler_no_notice | 1 | 100% | 100% | 100% |
+| traveler_with_notice | 4 | 75% | 100% | 100% |
+
+### Confusion matrix: TypeSafe Jev (rows = analyst label, columns = model&#x27;s choice)
+
+| Label \ answer | Approve | Step-up | Manual review | Error |
+| --- | --- | --- | --- | --- |
+| Approve | 15 | 1 | 0 | 0 |
+| Step-up | 0 | 1 | 0 | 0 |
+| Manual review | 0 | 2 | 1 | 0 |
+
+### Confusion matrix: OpenAI Decisions (rows = analyst label, columns = model&#x27;s choice)
+
+| Label \ answer | Approve | Step-up | Manual review | Error |
+| --- | --- | --- | --- | --- |
+| Approve | 14 | 2 | 0 | 0 |
+| Step-up | 0 | 1 | 0 | 0 |
+| Manual review | 0 | 2 | 1 | 0 |
+
+### Confusion matrix: Microsoft Decision-1 (rows = analyst label, columns = model&#x27;s choice)
+
+| Label \ answer | Approve | Step-up | Manual review | Error |
+| --- | --- | --- | --- | --- |
+| Approve | 15 | 1 | 0 | 0 |
+| Step-up | 0 | 1 | 0 | 0 |
+| Manual review | 0 | 1 | 2 | 0 |
+
+## Calibration
+
+When a model says 80%, is it right about 80% of the time? Bins are by the model&#x27;s top probability.
+
+**TypeSafe Jev**
+
+| Top probability | Cases | Mean stated | Actually right |
+| --- | --- | --- | --- |
+| 0.0-0.2 | 0 | – | – |
+| 0.2-0.4 | 0 | – | – |
+| 0.4-0.6 | 5 | 55% | 40% |
+| 0.6-0.8 | 3 | 68% | 100% |
+| 0.8-1.0 | 12 | 97% | 100% |
+
+**OpenAI Decisions**
+
+| Top probability | Cases | Mean stated | Actually right |
+| --- | --- | --- | --- |
+| 0.0-0.2 | 0 | – | – |
+| 0.2-0.4 | 0 | – | – |
+| 0.4-0.6 | 3 | 54% | 33% |
+| 0.6-0.8 | 3 | 71% | 33% |
+| 0.8-1.0 | 14 | 94% | 100% |
+
+**Microsoft Decision-1**
+
+| Top probability | Cases | Mean stated | Actually right |
+| --- | --- | --- | --- |
+| 0.0-0.2 | 0 | – | – |
+| 0.2-0.4 | 0 | – | – |
+| 0.4-0.6 | 1 | 49% | 100% |
+| 0.6-0.8 | 3 | 70% | 33% |
+| 0.8-1.0 | 16 | 98% | 100% |
+
+## Option-order check
+
+Same case, same rubric, the three options listed in 6 different orders. A model that reads the content and not the order gives the same answer every time.
+
+|  | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+| --- | --- | --- | --- |
+| Cases answered in every order | 20 | 20 | 20 |
+| Same route in every order | 85.0% | 75.0% | 95.0% |
+| Cases whose route changed | 3 | 5 | 1 |
+| Distinct routes per case (1 / 2 / 3) | 17 / 3 / 0 | 15 / 5 / 0 | 19 / 1 / 0 |
+| Same final action in every order | 100.0% | 70.0% | 100.0% |
+| P(approve) range across orders, mean | 0.059 | 0.240 | 0.008 |
+| P(approve) range across orders, p95 | 0.181 | 0.735 | 0.025 |
+| Largest range, any option | 0.200 | 0.830 | 0.123 |
+| Route accuracy, best − worst order | 10.0% | 20.0% | 5.0% |
+| Macro-F1, best − worst order | 20.0% | 19.9% | 13.3% |
+
+### By order
+
+| Order (A = approve, S = step-up, M = manual review) | TypeSafe Jev accuracy | TypeSafe Jev macro-F1 | OpenAI Decisions accuracy | OpenAI Decisions macro-F1 | Microsoft Decision-1 accuracy | Microsoft Decision-1 macro-F1 |
+| --- | --- | --- | --- | --- | --- | --- |
+| A-S-M (original) | 85.0% | 62.3% | 80.0% | 58.9% | 90.0% | 75.6% |
+| A-M-S | 85.0% | 62.3% | 80.0% | 58.9% | 85.0% | 62.3% |
+| S-A-M | 85.0% | 62.3% | 65.0% | 51.2% | 90.0% | 75.6% |
+| S-M-A | 95.0% | 82.2% | 65.0% | 51.2% | 85.0% | 62.3% |
+| M-A-S | 90.0% | 66.7% | 85.0% | 71.1% | 90.0% | 75.6% |
+| M-S-A (reversed) | 95.0% | 82.2% | 85.0% | 71.1% | 85.0% | 62.3% |
+
+### Position bias (all six orders)
+
+Across the six orders every option sits in every position equally often, so an order-blind model averages exactly 1/3 probability per position. A positive number means the model favours that slot.
+
+| Position | TypeSafe Jev: mean P / bias / chosen | OpenAI Decisions: mean P / bias / chosen | Microsoft Decision-1: mean P / bias / chosen |
+| --- | --- | --- | --- |
+| listed 1st | 0.323 / -0.010 / 32% | 0.392 / +0.059 / 40% | 0.334 / +0.001 / 33% |
+| listed 2nd | 0.338 / +0.004 / 33% | 0.319 / -0.014 / 30% | 0.332 / -0.001 / 32% |
+| listed 3rd | 0.339 / +0.006 / 34% | 0.289 / -0.044 / 30% | 0.334 / +0.000 / 34% |
+
+TypeSafe Jev, cases whose route changed (first 10): case-0000 (traveler_with_notice): A-S-M S, A-M-S S, S-A-M S, S-M-A A, M-A-S A, M-S-A A; case-0005 (mule): A-S-M S, A-M-S S, S-A-M S, S-M-A S, M-A-S S, M-S-A M; case-0012 (mule): A-S-M S, A-M-S S, S-A-M S, S-M-A M, M-A-S S, M-S-A S
+
+OpenAI Decisions, cases whose route changed (first 10): case-0000 (traveler_with_notice): A-S-M A, A-M-S A, S-A-M S, S-M-A S, M-A-S A, M-S-A A; case-0005 (mule): A-S-M S, A-M-S S, S-A-M S, S-M-A S, M-A-S M, M-S-A M; case-0013 (traveler_with_notice): A-S-M A, A-M-S A, S-A-M A, S-M-A S, M-A-S A, M-S-A A; case-0017 (traveler_with_notice): A-S-M A, A-M-S A, S-A-M S, S-M-A A, M-A-S A, M-S-A A; case-0018 (large_familiar): A-S-M A, A-M-S A, S-A-M S, S-M-A S, M-A-S A, M-S-A A
+
+Microsoft Decision-1, cases whose route changed (first 10): case-0005 (mule): A-S-M M, A-M-S S, S-A-M M, S-M-A S, M-A-S M, M-S-A S
+
+## Repeatability
+
+The first cases asked a second time, identical request.
+
+|  | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+| --- | --- | --- | --- |
+| Pairs | 5 | 5 | 5 |
+| Same choice | 100% | 100% | 100% |
+| Identical probabilities | 40% | 100% | 20% |
+| Largest probability change | 0.010 | 0.000 | 0.002 |
+| Same final action | 100% | 100% | 100% |
+
+## Confidence field
+
+|  | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+| --- | --- | --- | --- |
+| Where confidence came from | api: 20 | api: 20 | api: 20 |
+| Gap from (k·p_max−1)/(k−1), max | 0.0050 | 0.0050 | 0.0000 |
+| Stated choice ≠ highest probability | 0 | 0 | 1 |
+
+## Where they disagree (4 cases, first 25)
+
+| Case | Type | Label | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+| --- | --- | --- | --- | --- | --- |
+| case-0000 | traveler_with_notice | Approve | Step-up | Approve | Approve |
+| case-0005 | mule | Manual review | Step-up | Step-up | Manual review |
+| case-0009 | benign_notes | Approve | Approve | Step-up | Approve |
+| case-0011 | large_familiar | Approve | Approve | Step-up | Step-up |
+
+## How to read this
+
+- **Latency** is wall-clock time from this machine, per successful call, warm-up excluded. It includes the network path to each provider, which depends on where you ran it. Server-reported processing time is shown when a provider sends it in a response header.
+- **Cost** is list price × the tokens each API reported. None of the APIs charges for output tokens. The tokenizers differ, so the same request can count as a different number of tokens.
+- **Accuracy** is against synthetic analyst labels. It tells you how each model reads this rubric on these cases, not how it would do on your production traffic.
+- **Final action** applies one fixed policy to every model. A model can pick the right route and still get a different action if its probabilities are more or less extreme. That is what the calibration rows explain.
+- **One run** is one sample. Run it again on another day before quoting small differences.
+- The OpenAI Decisions API is a public beta; behaviour and prices may change.
+- Microsoft Decision-1 was released on 9 Oct 2026. Microsoft says its weights are updated continually and it may be rebased on other models, so pin the served model in each run&#x27;s metadata when you quote it.
+- Every call, with the full response body, is in `calls.jsonl` in this folder.
+</pre></details>
+</main><div id="tip"></div><script>const tip=document.getElementById('tip');document.addEventListener('mousemove',e=>{const t=e.target.closest('[data-tip]');
+if(!t){tip.style.display='none';return}tip.innerHTML=t.dataset.tip;tip.style.display='block';
+tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-8)+'px';tip.style.top=Math.min(e.clientY+14,innerHeight-tip.offsetHeight-8)+'px'});</script></body></html>

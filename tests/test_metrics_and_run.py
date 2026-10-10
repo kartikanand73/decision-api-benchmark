@@ -295,3 +295,23 @@ def test_identical_count_agrees_with_max_change():
     assert q["identical_count"] == 4 and q["pairs"] == 5 and q["max_abs_delta"] == pytest.approx(0.05)
     from compare.report import share
     assert share(q["identical_count"], q["pairs"]) == "4 / 5 (80.0%)"
+
+
+def test_rebuild_recomputes_summary_from_calls(tmp_path, monkeypatch):
+    """Regression: reports rebuilt from a summary.json written by older code showed '–' for new counts."""
+    import json
+    from compare import env, report, run as run_mod
+    monkeypatch.setattr(run_mod, "ROOT", tmp_path)
+    monkeypatch.setattr(env, "ROOT", tmp_path)
+    (tmp_path / "data").mkdir()
+    data = tmp_path / "data" / "cases.jsonl"
+    data.write_text("\n".join(json.dumps(c) for c in generate(12, 4)), encoding="utf-8")
+    d = run_mod.main(["--mock", "--data", str(data), "--label", "r", "--repeat", "3", "--warmup", "1"])
+    s = json.loads((d / "summary.json").read_text(encoding="utf-8"))
+    for p in s["providers"].values():                     # simulate a summary from the previous code version
+        p["repeat"].pop("same_choice_count"); p["repeat"].pop("identical_count"); p["order"].pop("cases_same_action")
+    (d / "summary.json").write_text(json.dumps(s), encoding="utf-8")
+    note = report.rebuild(d)
+    md = (d / "report.md").read_text(encoding="utf-8")
+    assert "recomputed" in note and (d / "summary.prev.json").exists()
+    assert "same choice 3 / 3 (100%)" in md and "| Same final action in every order | 12 / 12 (100%)" in md

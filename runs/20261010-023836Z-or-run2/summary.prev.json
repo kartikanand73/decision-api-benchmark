@@ -1,0 +1,4019 @@
+{
+  "providers": {
+    "jev": {
+      "latency": {
+        "n": 3000,
+        "p50": 238.46225001034327,
+        "p90": 303.49347000883427,
+        "p95": 334.39977998496033,
+        "p99": 443.9074439846443,
+        "mean": 252.94715936633293,
+        "min": 183.3555999910459,
+        "max": 2693.7850000103936,
+        "p95_including_retries": 334.40537502174266,
+        "server_reported": null
+      },
+      "cost": {
+        "billed_in_run_usd": 0.09912676200000001,
+        "provider_reported_usd": 0.09912676200000001,
+        "provider_reported_calls": 3055,
+        "per_call_usd": 3.2448612e-05,
+        "per_1k_decisions_usd": 0.032448612,
+        "per_1m_decisions_usd": 32.448612
+      },
+      "tokens": {
+        "input_per_call": 772.586,
+        "output_per_call": 63.93266666666667,
+        "input_total": 2360161,
+        "output_total": 195324
+      },
+      "reliability": {
+        "calls": 3055,
+        "measure_calls": 3000,
+        "ok": 3000,
+        "success_rate": 1.0,
+        "errors": {},
+        "http_status": {},
+        "calls_needing_retry": 0,
+        "billed_calls": 3055,
+        "error_samples": {}
+      },
+      "accuracy": {
+        "cases": 500,
+        "route_accuracy": 0.922,
+        "route_accuracy_answered": 0.922,
+        "action_accuracy": 0.832,
+        "fraud_auto_approved": 0,
+        "manual_reviews": 106,
+        "unnecessary_manual_reviews": 2,
+        "actions": {
+          "step_up_verification": 183,
+          "approve": 211,
+          "manual_review": 106
+        },
+        "route_classes": {
+          "per_class": {
+            "approve": {
+              "support": 320,
+              "precision": 1.0,
+              "recall": 0.953125,
+              "f1": 0.976
+            },
+            "step_up_verification": {
+              "support": 76,
+              "precision": 0.6608695652173913,
+              "recall": 1.0,
+              "f1": 0.7958115183246073
+            },
+            "manual_review": {
+              "support": 104,
+              "precision": 1.0,
+              "recall": 0.7692307692307693,
+              "f1": 0.8695652173913044
+            }
+          },
+          "macro_f1": 0.8804589119053038,
+          "balanced_accuracy": 0.907451923076923
+        },
+        "action_classes": {
+          "per_class": {
+            "approve": {
+              "support": 293,
+              "precision": 1.0,
+              "recall": 0.7201365187713311,
+              "f1": 0.8373015873015873
+            },
+            "step_up_verification": {
+              "support": 103,
+              "precision": 0.5519125683060109,
+              "recall": 0.9805825242718447,
+              "f1": 0.7062937062937062
+            },
+            "manual_review": {
+              "support": 104,
+              "precision": 0.9811320754716981,
+              "recall": 1.0,
+              "f1": 0.9904761904761905
+            }
+          },
+          "macro_f1": 0.8446904946904947,
+          "balanced_accuracy": 0.9002396810143919
+        },
+        "per_archetype_route_accuracy": {
+          "account_takeover": 0.8163265306122449,
+          "ato_quiet": 1.0,
+          "benign_notes": 1.0,
+          "large_familiar": 0.9259259259259259,
+          "mule": 0.5454545454545454,
+          "new_device_legit": 1.0,
+          "routine": 0.9907834101382489,
+          "traveler_no_notice": 1.0,
+          "traveler_with_notice": 0.7441860465116279
+        },
+        "confusion": {
+          "approve": {
+            "step_up_verification": 15,
+            "approve": 305
+          },
+          "step_up_verification": {
+            "step_up_verification": 76
+          },
+          "manual_review": {
+            "step_up_verification": 24,
+            "manual_review": 80
+          }
+        }
+      },
+      "calibration": {
+        "ece": 0.06577999999999998,
+        "table": [
+          {
+            "bin": "0.0-0.2",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.2-0.4",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.4-0.6",
+            "n": 67,
+            "mean_conf": 0.54,
+            "accuracy": 0.5373134328358209
+          },
+          {
+            "bin": "0.6-0.8",
+            "n": 86,
+            "mean_conf": 0.6867441860465117,
+            "accuracy": 0.9069767441860465
+          },
+          {
+            "bin": "0.8-1.0",
+            "n": 347,
+            "mean_conf": 0.9603170028818444,
+            "accuracy": 1.0
+          }
+        ],
+        "brier": 0.1168476,
+        "log_loss": 0.19839786606480825,
+        "mean_top_probability": 0.8569399999999999,
+        "share_top_ge_0_95": 0.528,
+        "share_top_ge_0_99": 0.37
+      },
+      "takeover": {
+        "labelled_cases": 467,
+        "accuracy_at_0_5": 0.9957173447537473,
+        "brier": 0.034282869379014994,
+        "auc": 1.0
+      },
+      "confidence": {
+        "source": {
+          "api": 500
+        },
+        "formula_gap_mean": 0.00259,
+        "formula_gap_max": 0.005,
+        "choice_not_highest_probability": 1
+      },
+      "order": {
+        "orders": [
+          "original",
+          "AMS",
+          "SAM",
+          "SMA",
+          "MAS",
+          "reversed"
+        ],
+        "cases_all_orders_ok": 500,
+        "same_route_in_every_order": 0.918,
+        "cases_route_changed": 41,
+        "same_action_in_every_order": 0.92,
+        "distinct_routes_per_case": {
+          "2": 41,
+          "1": 459
+        },
+        "p_approve_range_mean": 0.0469,
+        "p_approve_range_p95": 0.19999999999999996,
+        "max_range_any_route": 0.3,
+        "per_order": {
+          "original": {
+            "cases": 500,
+            "route_accuracy": 0.922,
+            "macro_f1": 0.8804589119053038,
+            "action_accuracy": 0.832
+          },
+          "AMS": {
+            "cases": 500,
+            "route_accuracy": 0.97,
+            "macro_f1": 0.9530403963006058,
+            "action_accuracy": 0.808
+          },
+          "SAM": {
+            "cases": 500,
+            "route_accuracy": 0.96,
+            "macro_f1": 0.9378734307652791,
+            "action_accuracy": 0.822
+          },
+          "SMA": {
+            "cases": 500,
+            "route_accuracy": 0.98,
+            "macro_f1": 0.968589015772773,
+            "action_accuracy": 0.824
+          },
+          "MAS": {
+            "cases": 500,
+            "route_accuracy": 0.974,
+            "macro_f1": 0.9540799205073668,
+            "action_accuracy": 0.848
+          },
+          "reversed": {
+            "cases": 500,
+            "route_accuracy": 0.988,
+            "macro_f1": 0.9808938646586952,
+            "action_accuracy": 0.812
+          }
+        },
+        "route_accuracy_spread": 0.06599999999999995,
+        "macro_f1_spread": 0.10043495275339143,
+        "position": {
+          "mean_probability_by_position": [
+            0.32752,
+            0.33773,
+            0.33474333333333334
+          ],
+          "bias_vs_one_third": [
+            -0.005813333333333337,
+            0.00439666666666666,
+            0.0014100000000000223
+          ],
+          "share_chosen_by_position": [
+            0.3313333333333333,
+            0.3403333333333333,
+            0.3283333333333333
+          ]
+        },
+        "changed_examples": [
+          {
+            "case": "case-0000",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0005",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "manual_review",
+              "SAM": "step_up_verification",
+              "SMA": "manual_review",
+              "MAS": "step_up_verification",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0012",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "manual_review",
+              "MAS": "step_up_verification",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0026",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "manual_review",
+              "SAM": "manual_review",
+              "SMA": "manual_review",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0030",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0034",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "manual_review",
+              "SAM": "manual_review",
+              "SMA": "manual_review",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0050",
+            "archetype": "routine",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "approve",
+              "SAM": "approve",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0058",
+            "archetype": "mule",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "manual_review",
+              "SAM": "step_up_verification",
+              "SMA": "manual_review",
+              "MAS": "step_up_verification",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0068",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "manual_review",
+              "SMA": "manual_review",
+              "MAS": "manual_review",
+              "reversed": "step_up_verification"
+            }
+          },
+          {
+            "case": "case-0075",
+            "archetype": "mule",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "manual_review",
+              "SAM": "manual_review",
+              "SMA": "manual_review",
+              "MAS": "manual_review",
+              "reversed": "step_up_verification"
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "pairs": 50,
+        "same_choice_rate": 1.0,
+        "identical_probabilities_rate": 0.54,
+        "mean_max_abs_delta": 0.01560000000000001,
+        "max_abs_delta": 0.08000000000000002,
+        "same_action_rate": 1.0
+      },
+      "served_models": {
+        "typesafe/jev-1.13-20260917": 3055
+      },
+      "simulated": false
+    },
+    "openai": {
+      "latency": {
+        "n": 3000,
+        "p50": 200.04105000407435,
+        "p90": 280.3413899819134,
+        "p95": 328.98821998678596,
+        "p99": 748.2691820032771,
+        "mean": 225.839653700367,
+        "min": 145.73509999900125,
+        "max": 3626.6920999914873,
+        "p95_including_retries": 328.9972649974514,
+        "server_reported": null
+      },
+      "cost": {
+        "billed_in_run_usd": 0.1866111,
+        "provider_reported_usd": 0.1866111,
+        "provider_reported_calls": 3055,
+        "per_call_usd": 6.1086e-05,
+        "per_1k_decisions_usd": 0.061086,
+        "per_1m_decisions_usd": 61.086000000000006
+      },
+      "tokens": {
+        "input_per_call": 610.86,
+        "output_per_call": 0.0,
+        "input_total": 1866111,
+        "output_total": 0
+      },
+      "reliability": {
+        "calls": 3055,
+        "measure_calls": 3000,
+        "ok": 3000,
+        "success_rate": 1.0,
+        "errors": {},
+        "http_status": {},
+        "calls_needing_retry": 0,
+        "billed_calls": 3055,
+        "error_samples": {}
+      },
+      "accuracy": {
+        "cases": 500,
+        "route_accuracy": 0.774,
+        "route_accuracy_answered": 0.774,
+        "action_accuracy": 0.736,
+        "fraud_auto_approved": 0,
+        "manual_reviews": 112,
+        "unnecessary_manual_reviews": 10,
+        "actions": {
+          "approve": 173,
+          "step_up_verification": 215,
+          "manual_review": 112
+        },
+        "route_classes": {
+          "per_class": {
+            "approve": {
+              "support": 320,
+              "precision": 1.0,
+              "recall": 0.80625,
+              "f1": 0.8927335640138409
+            },
+            "step_up_verification": {
+              "support": 76,
+              "precision": 0.4021164021164021,
+              "recall": 1.0,
+              "f1": 0.5735849056603773
+            },
+            "manual_review": {
+              "support": 104,
+              "precision": 1.0,
+              "recall": 0.5096153846153846,
+              "f1": 0.6751592356687898
+            }
+          },
+          "macro_f1": 0.7138259017810027,
+          "balanced_accuracy": 0.7719551282051281
+        },
+        "action_classes": {
+          "per_class": {
+            "approve": {
+              "support": 293,
+              "precision": 1.0,
+              "recall": 0.590443686006826,
+              "f1": 0.742489270386266
+            },
+            "step_up_verification": {
+              "support": 103,
+              "precision": 0.4325581395348837,
+              "recall": 0.9029126213592233,
+              "f1": 0.5849056603773585
+            },
+            "manual_review": {
+              "support": 104,
+              "precision": 0.9107142857142857,
+              "recall": 0.9807692307692307,
+              "f1": 0.9444444444444444
+            }
+          },
+          "macro_f1": 0.757279791736023,
+          "balanced_accuracy": 0.82470851271176
+        },
+        "per_archetype_route_accuracy": {
+          "account_takeover": 0.4489795918367347,
+          "ato_quiet": 0.7727272727272727,
+          "benign_notes": 0.7272727272727273,
+          "large_familiar": 0.37037037037037035,
+          "mule": 0.42424242424242425,
+          "new_device_legit": 1.0,
+          "routine": 0.847926267281106,
+          "traveler_no_notice": 1.0,
+          "traveler_with_notice": 0.9302325581395349
+        },
+        "confusion": {
+          "approve": {
+            "approve": 258,
+            "step_up_verification": 62
+          },
+          "step_up_verification": {
+            "step_up_verification": 76
+          },
+          "manual_review": {
+            "step_up_verification": 51,
+            "manual_review": 53
+          }
+        }
+      },
+      "calibration": {
+        "ece": 0.04116000000000004,
+        "table": [
+          {
+            "bin": "0.0-0.2",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.2-0.4",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.4-0.6",
+            "n": 73,
+            "mean_conf": 0.5424657534246575,
+            "accuracy": 0.5205479452054794
+          },
+          {
+            "bin": "0.6-0.8",
+            "n": 124,
+            "mean_conf": 0.6858870967741936,
+            "accuracy": 0.5967741935483871
+          },
+          {
+            "bin": "0.8-1.0",
+            "n": 303,
+            "mean_conf": 0.9337623762376238,
+            "accuracy": 0.9075907590759076
+          }
+        ],
+        "brier": 0.29683319999999996,
+        "log_loss": 0.45822965360528317,
+        "mean_top_probability": 0.81516,
+        "share_top_ge_0_95": 0.32,
+        "share_top_ge_0_99": 0.112
+      },
+      "takeover": {
+        "labelled_cases": 467,
+        "accuracy_at_0_5": 0.9785867237687366,
+        "brier": 0.02463169164882227,
+        "auc": 1.0
+      },
+      "confidence": {
+        "source": {
+          "api": 500
+        },
+        "formula_gap_mean": 0.0023799999999999997,
+        "formula_gap_max": 0.005,
+        "choice_not_highest_probability": 0
+      },
+      "order": {
+        "orders": [
+          "original",
+          "AMS",
+          "SAM",
+          "SMA",
+          "MAS",
+          "reversed"
+        ],
+        "cases_all_orders_ok": 500,
+        "same_route_in_every_order": 0.642,
+        "cases_route_changed": 179,
+        "same_action_in_every_order": 0.844,
+        "distinct_routes_per_case": {
+          "2": 179,
+          "1": 321
+        },
+        "p_approve_range_mean": 0.19394,
+        "p_approve_range_p95": 0.6714999999999985,
+        "max_range_any_route": 0.94,
+        "per_order": {
+          "original": {
+            "cases": 500,
+            "route_accuracy": 0.774,
+            "macro_f1": 0.7138259017810027,
+            "action_accuracy": 0.736
+          },
+          "AMS": {
+            "cases": 500,
+            "route_accuracy": 0.83,
+            "macro_f1": 0.7701700122173429,
+            "action_accuracy": 0.732
+          },
+          "SAM": {
+            "cases": 500,
+            "route_accuracy": 0.614,
+            "macro_f1": 0.6062147420913199,
+            "action_accuracy": 0.644
+          },
+          "SMA": {
+            "cases": 500,
+            "route_accuracy": 0.63,
+            "macro_f1": 0.6475346626532468,
+            "action_accuracy": 0.656
+          },
+          "MAS": {
+            "cases": 500,
+            "route_accuracy": 0.882,
+            "macro_f1": 0.8657059673743351,
+            "action_accuracy": 0.78
+          },
+          "reversed": {
+            "cases": 500,
+            "route_accuracy": 0.786,
+            "macro_f1": 0.7768704146199609,
+            "action_accuracy": 0.718
+          }
+        },
+        "route_accuracy_spread": 0.268,
+        "macro_f1_spread": 0.25949122528301527,
+        "position": {
+          "mean_probability_by_position": [
+            0.3815566666666667,
+            0.33180666666666664,
+            0.28663666666666665
+          ],
+          "bias_vs_one_third": [
+            0.048223333333333396,
+            -0.0015266666666666762,
+            -0.046696666666666664
+          ],
+          "share_chosen_by_position": [
+            0.41633333333333333,
+            0.31666666666666665,
+            0.267
+          ]
+        },
+        "changed_examples": [
+          {
+            "case": "case-0000",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0005",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0013",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "approve",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0017",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0018",
+            "archetype": "large_familiar",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0021",
+            "archetype": "account_takeover",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "manual_review",
+              "SAM": "step_up_verification",
+              "SMA": "manual_review",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0024",
+            "archetype": "routine",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "step_up_verification"
+            }
+          },
+          {
+            "case": "case-0025",
+            "archetype": "routine",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "step_up_verification"
+            }
+          },
+          {
+            "case": "case-0026",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0030",
+            "archetype": "traveler_with_notice",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "pairs": 50,
+        "same_choice_rate": 1.0,
+        "identical_probabilities_rate": 1.0,
+        "mean_max_abs_delta": 0.0,
+        "max_abs_delta": 0.0,
+        "same_action_rate": 1.0
+      },
+      "served_models": {
+        "openai/gpt-6-luna-decisions-20261006": 3055
+      },
+      "simulated": false
+    },
+    "microsoft": {
+      "latency": {
+        "n": 3000,
+        "p50": 304.0647999878274,
+        "p90": 358.5173000115901,
+        "p95": 384.7071599899209,
+        "p99": 493.04789801651964,
+        "mean": 314.3601980333042,
+        "min": 223.78570001455955,
+        "max": 10035.873100016033,
+        "p95_including_retries": 384.7144450148335,
+        "server_reported": null
+      },
+      "cost": {
+        "billed_in_run_usd": 0.054235314,
+        "provider_reported_usd": 0.054235314,
+        "provider_reported_calls": 3055,
+        "per_call_usd": 1.7753988e-05,
+        "per_1k_decisions_usd": 0.017753988000000002,
+        "per_1m_decisions_usd": 17.753988
+      },
+      "tokens": {
+        "input_per_call": 422.714,
+        "output_per_call": 2.0,
+        "input_total": 1291317,
+        "output_total": 6110
+      },
+      "reliability": {
+        "calls": 3055,
+        "measure_calls": 3000,
+        "ok": 3000,
+        "success_rate": 1.0,
+        "errors": {},
+        "http_status": {},
+        "calls_needing_retry": 0,
+        "billed_calls": 3055,
+        "error_samples": {}
+      },
+      "accuracy": {
+        "cases": 500,
+        "route_accuracy": 0.908,
+        "route_accuracy_answered": 0.908,
+        "action_accuracy": 0.79,
+        "fraud_auto_approved": 0,
+        "manual_reviews": 147,
+        "unnecessary_manual_reviews": 50,
+        "actions": {
+          "approve": 245,
+          "manual_review": 147,
+          "step_up_verification": 108
+        },
+        "route_classes": {
+          "per_class": {
+            "approve": {
+              "support": 320,
+              "precision": 1.0,
+              "recall": 0.915625,
+              "f1": 0.9559543230016314
+            },
+            "step_up_verification": {
+              "support": 76,
+              "precision": 0.6229508196721312,
+              "recall": 1.0,
+              "f1": 0.7676767676767677
+            },
+            "manual_review": {
+              "support": 104,
+              "precision": 1.0,
+              "recall": 0.8173076923076923,
+              "f1": 0.8994708994708994
+            }
+          },
+          "macro_f1": 0.8743673300497662,
+          "balanced_accuracy": 0.9109775641025641
+        },
+        "action_classes": {
+          "per_class": {
+            "approve": {
+              "support": 293,
+              "precision": 1.0,
+              "recall": 0.8361774744027304,
+              "f1": 0.9107806691449815
+            },
+            "step_up_verification": {
+              "support": 103,
+              "precision": 0.49074074074074076,
+              "recall": 0.5145631067961165,
+              "f1": 0.5023696682464456
+            },
+            "manual_review": {
+              "support": 104,
+              "precision": 0.6598639455782312,
+              "recall": 0.9326923076923077,
+              "f1": 0.7729083665338646
+            }
+          },
+          "macro_f1": 0.7286862346417639,
+          "balanced_accuracy": 0.7611442962970516
+        },
+        "per_archetype_route_accuracy": {
+          "account_takeover": 1.0,
+          "ato_quiet": 0.9545454545454546,
+          "benign_notes": 0.9696969696969697,
+          "large_familiar": 0.5555555555555556,
+          "mule": 0.45454545454545453,
+          "new_device_legit": 1.0,
+          "routine": 0.9354838709677419,
+          "traveler_no_notice": 1.0,
+          "traveler_with_notice": 1.0
+        },
+        "confusion": {
+          "approve": {
+            "approve": 293,
+            "step_up_verification": 27
+          },
+          "step_up_verification": {
+            "step_up_verification": 76
+          },
+          "manual_review": {
+            "manual_review": 85,
+            "step_up_verification": 19
+          }
+        }
+      },
+      "calibration": {
+        "ece": 0.06190115191596933,
+        "table": [
+          {
+            "bin": "0.0-0.2",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.2-0.4",
+            "n": 0,
+            "mean_conf": null,
+            "accuracy": null
+          },
+          {
+            "bin": "0.4-0.6",
+            "n": 20,
+            "mean_conf": 0.5527445321637299,
+            "accuracy": 0.5
+          },
+          {
+            "bin": "0.6-0.8",
+            "n": 69,
+            "mean_conf": 0.6975817464516418,
+            "accuracy": 0.5217391304347826
+          },
+          {
+            "bin": "0.8-1.0",
+            "n": 411,
+            "mean_conf": 0.9494828593441684,
+            "accuracy": 0.9927007299270073
+          }
+        ],
+        "brier": 0.11169294247319571,
+        "log_loss": 0.19123328301395368,
+        "mean_top_probability": 0.8988509726777821,
+        "share_top_ge_0_95": 0.492,
+        "share_top_ge_0_99": 0.2
+      },
+      "takeover": {
+        "labelled_cases": 467,
+        "accuracy_at_0_5": 0.892933618843683,
+        "brier": 0.0624796745770121,
+        "auc": 1.0
+      },
+      "confidence": {
+        "source": {
+          "api": 500
+        },
+        "formula_gap_mean": 0.0,
+        "formula_gap_max": 0.0,
+        "choice_not_highest_probability": 1
+      },
+      "order": {
+        "orders": [
+          "original",
+          "AMS",
+          "SAM",
+          "SMA",
+          "MAS",
+          "reversed"
+        ],
+        "cases_all_orders_ok": 500,
+        "same_route_in_every_order": 0.972,
+        "cases_route_changed": 14,
+        "same_action_in_every_order": 0.966,
+        "distinct_routes_per_case": {
+          "1": 486,
+          "2": 14
+        },
+        "p_approve_range_mean": 0.015966550037470363,
+        "p_approve_range_p95": 0.07981432979055694,
+        "max_range_any_route": 0.3500932280036736,
+        "per_order": {
+          "original": {
+            "cases": 500,
+            "route_accuracy": 0.908,
+            "macro_f1": 0.8743673300497662,
+            "action_accuracy": 0.79
+          },
+          "AMS": {
+            "cases": 500,
+            "route_accuracy": 0.91,
+            "macro_f1": 0.8734376999530777,
+            "action_accuracy": 0.786
+          },
+          "SAM": {
+            "cases": 500,
+            "route_accuracy": 0.904,
+            "macro_f1": 0.8678849525869966,
+            "action_accuracy": 0.78
+          },
+          "SMA": {
+            "cases": 500,
+            "route_accuracy": 0.912,
+            "macro_f1": 0.8767220621323965,
+            "action_accuracy": 0.784
+          },
+          "MAS": {
+            "cases": 500,
+            "route_accuracy": 0.904,
+            "macro_f1": 0.8678849525869966,
+            "action_accuracy": 0.782
+          },
+          "reversed": {
+            "cases": 500,
+            "route_accuracy": 0.916,
+            "macro_f1": 0.8832690911909576,
+            "action_accuracy": 0.786
+          }
+        },
+        "route_accuracy_spread": 0.01200000000000001,
+        "macro_f1_spread": 0.01538413860396104,
+        "position": {
+          "mean_probability_by_position": [
+            0.33332198702822,
+            0.33293429351314996,
+            0.33374371945863
+          ],
+          "bias_vs_one_third": [
+            -1.1346305113291155e-05,
+            -0.0003990398201833556,
+            0.00041038612529670226
+          ],
+          "share_chosen_by_position": [
+            0.334,
+            0.331,
+            0.335
+          ]
+        },
+        "changed_examples": [
+          {
+            "case": "case-0005",
+            "archetype": "mule",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "step_up_verification",
+              "SAM": "manual_review",
+              "SMA": "step_up_verification",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0066",
+            "archetype": "routine",
+            "answers": {
+              "original": "approve",
+              "AMS": "approve",
+              "SAM": "approve",
+              "SMA": "approve",
+              "MAS": "step_up_verification",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0097",
+            "archetype": "routine",
+            "answers": {
+              "original": "approve",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0163",
+            "archetype": "mule",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "manual_review",
+              "SAM": "manual_review",
+              "SMA": "manual_review",
+              "MAS": "step_up_verification",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0190",
+            "archetype": "ato_quiet",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "manual_review",
+              "SAM": "manual_review",
+              "SMA": "step_up_verification",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          },
+          {
+            "case": "case-0213",
+            "archetype": "routine",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "step_up_verification",
+              "reversed": "step_up_verification"
+            }
+          },
+          {
+            "case": "case-0221",
+            "archetype": "routine",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "approve",
+              "MAS": "step_up_verification",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0223",
+            "archetype": "routine",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "approve",
+              "SAM": "approve",
+              "SMA": "approve",
+              "MAS": "approve",
+              "reversed": "approve"
+            }
+          },
+          {
+            "case": "case-0281",
+            "archetype": "large_familiar",
+            "answers": {
+              "original": "step_up_verification",
+              "AMS": "approve",
+              "SAM": "step_up_verification",
+              "SMA": "step_up_verification",
+              "MAS": "step_up_verification",
+              "reversed": "step_up_verification"
+            }
+          },
+          {
+            "case": "case-0374",
+            "archetype": "ato_quiet",
+            "answers": {
+              "original": "manual_review",
+              "AMS": "step_up_verification",
+              "SAM": "step_up_verification",
+              "SMA": "manual_review",
+              "MAS": "manual_review",
+              "reversed": "manual_review"
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "pairs": 50,
+        "same_choice_rate": 0.98,
+        "identical_probabilities_rate": 0.18,
+        "mean_max_abs_delta": 0.010841248340411804,
+        "max_abs_delta": 0.12245878264206972,
+        "same_action_rate": 1.0
+      },
+      "served_models": {
+        "microsoft/microsoft-decision-1-20261009": 3055
+      },
+      "simulated": false
+    }
+  },
+  "pairs": [
+    {
+      "a": "jev",
+      "b": "openai",
+      "cases": 500,
+      "both_right": 377,
+      "only_a_right": 84,
+      "only_b_right": 10,
+      "neither_right": 29,
+      "macro_f1": {
+        "a": 0.8804589119053038,
+        "b": 0.7138259017810027,
+        "difference": 0.1666330101243011,
+        "difference_ci95": [
+          0.12703815734487492,
+          0.2050896008877487
+        ],
+        "accuracy_difference": 0.14800000000000002,
+        "accuracy_difference_ci95": [
+          0.112,
+          0.1820499999999997
+        ],
+        "bootstrap_resamples": 2000
+      },
+      "route_agreement": 0.812,
+      "action_agreement": 0.76,
+      "a_faster_share": 0.252,
+      "disagreements": [
+        {
+          "case": "case-0000",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0009",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0011",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0030",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0031",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0042",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0054",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0058",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0059",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0061",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0066",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0075",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0087",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0089",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0097",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0098",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0104",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0106",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0107",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0114",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0115",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0116",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0118",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0124",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0137",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0151",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0152",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0153",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0158",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0161",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0174",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0186",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0196",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0199",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0218",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0221",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0223",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0231",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0233",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0236",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0237",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0240",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0243",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0256",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0265",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0266",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0271",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0274",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0276",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0278",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0281",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0286",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0297",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0305",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0307",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0308",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0310",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0311",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0316",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0319",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0322",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0325",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0336",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0350",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0357",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0363",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0367",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0377",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0381",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0387",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0388",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0394",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0396",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0402",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0410",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0419",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0423",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0424",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0434",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0435",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0437",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0438",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0450",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0451",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0453",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0454",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0455",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0456",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0458",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0460",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0480",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0492",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0495",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0496",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        }
+      ]
+    },
+    {
+      "a": "jev",
+      "b": "microsoft",
+      "cases": 500,
+      "both_right": 432,
+      "only_a_right": 29,
+      "only_b_right": 22,
+      "neither_right": 17,
+      "macro_f1": {
+        "a": 0.8804589119053038,
+        "b": 0.8743673300497662,
+        "difference": 0.006091581855537598,
+        "difference_ci95": [
+          -0.028095499273929323,
+          0.03872634668138131
+        ],
+        "accuracy_difference": 0.014000000000000012,
+        "accuracy_difference_ci95": [
+          -0.014,
+          0.042
+        ],
+        "bootstrap_resamples": 2000
+      },
+      "route_agreement": 0.898,
+      "action_agreement": 0.758,
+      "a_faster_share": 0.876,
+      "disagreements": [
+        {
+          "case": "case-0000",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0005",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0011",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0030",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0031",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0037",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0062",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0075",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0080",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0089",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0091",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0114",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0118",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0131",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0161",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0174",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0196",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0199",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0213",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0218",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0221",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0223",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0244",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0250",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0266",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0270",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0281",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0286",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0290",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0308",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0316",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0322",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0325",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0339",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0343",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0347",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0353",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0357",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0367",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0388",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0394",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0416",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0423",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0437",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0444",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0450",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0451",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0454",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0460",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0482",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0483",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        }
+      ]
+    },
+    {
+      "a": "openai",
+      "b": "microsoft",
+      "cases": 500,
+      "both_right": 380,
+      "only_a_right": 7,
+      "only_b_right": 74,
+      "neither_right": 39,
+      "macro_f1": {
+        "a": 0.7138259017810027,
+        "b": 0.8743673300497662,
+        "difference": -0.1605414282687635,
+        "difference_ci95": [
+          -0.20132610894876182,
+          -0.11969207325195924
+        ],
+        "accuracy_difference": -0.134,
+        "accuracy_difference_ci95": [
+          -0.168,
+          -0.1
+        ],
+        "bootstrap_resamples": 2000
+      },
+      "route_agreement": 0.838,
+      "action_agreement": 0.762,
+      "a_faster_share": 0.922,
+      "disagreements": [
+        {
+          "case": "case-0005",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0009",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0037",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0042",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0054",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0058",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0059",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0061",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0062",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0066",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0080",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0087",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0091",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0097",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0098",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0104",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0106",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0107",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0115",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0116",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0124",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0131",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0137",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0151",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0152",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0153",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0158",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0186",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0213",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0231",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0233",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0236",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0237",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0240",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0243",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0244",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0250",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0256",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0265",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0270",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0271",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0274",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0276",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0278",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0290",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0297",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0305",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0307",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0310",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0311",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0319",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0336",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0339",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0343",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0347",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0350",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0353",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0363",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0377",
+          "archetype": "ato_quiet",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0381",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0387",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0396",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0402",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0410",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0416",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "approve",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0419",
+          "archetype": "mule",
+          "expected": "manual_review",
+          "a": "manual_review",
+          "b": "step_up_verification"
+        },
+        {
+          "case": "case-0424",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0434",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0435",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0438",
+          "archetype": "traveler_with_notice",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0444",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0453",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0455",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0456",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0458",
+          "archetype": "large_familiar",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0480",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0482",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0483",
+          "archetype": "account_takeover",
+          "expected": "manual_review",
+          "a": "step_up_verification",
+          "b": "manual_review"
+        },
+        {
+          "case": "case-0492",
+          "archetype": "benign_notes",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0495",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        },
+        {
+          "case": "case-0496",
+          "archetype": "routine",
+          "expected": "approve",
+          "a": "step_up_verification",
+          "b": "approve"
+        }
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "case": "case-0000",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0005",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0009",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0011",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0030",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0031",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0037",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "manual_review",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0042",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0054",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0058",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0059",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0061",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0062",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "approve",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0066",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0075",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0080",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0087",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0089",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0091",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "approve",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0097",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0098",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0104",
+      "archetype": "ato_quiet",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0106",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0107",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0114",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0115",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0116",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0118",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0124",
+      "archetype": "ato_quiet",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0131",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0137",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0151",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0152",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0153",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0158",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0161",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0174",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0186",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0196",
+      "archetype": "ato_quiet",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0199",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0213",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "approve",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0218",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0221",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0223",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0231",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0233",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0236",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0237",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0240",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0243",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0244",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "approve",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0250",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0256",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0265",
+      "archetype": "ato_quiet",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0266",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0270",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0271",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0274",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0276",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0278",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0281",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0286",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0290",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0297",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0305",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0307",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0308",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0310",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0311",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0316",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0319",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0322",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0325",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0336",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0339",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0343",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0347",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0350",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0353",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0357",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0363",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0367",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0377",
+      "archetype": "ato_quiet",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0381",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0387",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0388",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0394",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0396",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0402",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0410",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0416",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "approve",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0419",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "manual_review",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0423",
+      "archetype": "mule",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0424",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0434",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0435",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0437",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0438",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0444",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0450",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0451",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0453",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0454",
+      "archetype": "traveler_with_notice",
+      "expected": "approve",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "approve",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0455",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0456",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "manual_review",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0458",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0460",
+      "archetype": "large_familiar",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "step_up_verification"
+      }
+    },
+    {
+      "case": "case-0480",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0482",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0483",
+      "archetype": "account_takeover",
+      "expected": "manual_review",
+      "answers": {
+        "jev": "step_up_verification",
+        "openai": "step_up_verification",
+        "microsoft": "manual_review"
+      }
+    },
+    {
+      "case": "case-0492",
+      "archetype": "benign_notes",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0495",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    },
+    {
+      "case": "case-0496",
+      "archetype": "routine",
+      "expected": "approve",
+      "answers": {
+        "jev": "approve",
+        "openai": "step_up_verification",
+        "microsoft": "approve"
+      }
+    }
+  ],
+  "ranking": {
+    "macro_f1": [
+      "jev",
+      "microsoft",
+      "openai"
+    ],
+    "route_accuracy": [
+      "jev",
+      "microsoft",
+      "openai"
+    ],
+    "latency_p50": [
+      "openai",
+      "jev",
+      "microsoft"
+    ],
+    "cost_per_1k": [
+      "microsoft",
+      "jev",
+      "openai"
+    ],
+    "ece": [
+      "openai",
+      "microsoft",
+      "jev"
+    ]
+  },
+  "cases": 500,
+  "archetypes": {
+    "traveler_with_notice": 43,
+    "routine": 217,
+    "traveler_no_notice": 33,
+    "mule": 33,
+    "benign_notes": 33,
+    "ato_quiet": 22,
+    "large_familiar": 27,
+    "account_takeover": 49,
+    "new_device_legit": 43
+  }
+}

@@ -370,10 +370,35 @@ def write_reports(out: Path, m: dict, s: dict) -> None:
     (out / "report.html").write_text(render_html(m, s, md), encoding="utf-8")
 
 
+def rebuild(d: Path) -> str:
+    """Recompute summary.json from the raw calls (so reports made by older code gain every new metric), then render.
+
+    The previous summary is kept as summary.prev.json. No API calls are made.
+    """
+    from .dataset import load_for_run
+    from .env import ROOT
+    from .metrics import summarize
+    meta = json.loads((d / "meta.json").read_text(encoding="utf-8"))
+    note = "summary recomputed from calls.jsonl"
+    cases, why = load_for_run(meta, ROOT)
+    calls_path = d / "calls.jsonl"
+    if cases is not None and calls_path.exists():
+        calls = [json.loads(l) for l in calls_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+        summary = summarize(calls, cases)
+        old = d / "summary.json"
+        if old.exists():
+            (d / "summary.prev.json").write_text(old.read_text(encoding="utf-8"), encoding="utf-8")
+        old.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    else:
+        summary = json.loads((d / "summary.json").read_text(encoding="utf-8"))
+        note = f"summary.json used as saved ({why or 'calls.jsonl missing'}); metrics added later show as –"
+    write_reports(d, meta, summary)
+    return note
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         raise SystemExit("usage: python -m compare.report runs/<folder>")
     d = Path(sys.argv[1])
-    write_reports(d, json.loads((d / "meta.json").read_text(encoding="utf-8")),
-                  json.loads((d / "summary.json").read_text(encoding="utf-8")))
-    print(f"rebuilt {d / 'report.md'} and {d / 'report.html'}")
+    note = rebuild(d)
+    print(f"rebuilt {d / 'report.md'} and {d / 'report.html'} ({note})")

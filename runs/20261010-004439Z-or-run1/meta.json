@@ -1,0 +1,74 @@
+{
+  "started_at": "2026-10-10T00:44:39.569250+00:00",
+  "duration_s": 241.8,
+  "command": "python -m compare.run --label or-run1 --yes --location Columbus OH",
+  "args": {
+    "data": "C:\\Users\\kartikanand\\Downloads\\jev-vs-openai-decisions_UNZIP\\jev-vs-openai-decisions\\data\\cases.jsonl",
+    "providers": "jev,openai,microsoft",
+    "limit": 0,
+    "orders": "all",
+    "repeat": 50,
+    "warmup": 5,
+    "concurrency": 4,
+    "timeout": 30.0,
+    "seed": 2026,
+    "label": "or-run1",
+    "location": "Columbus OH",
+    "mock": false,
+    "yes": true
+  },
+  "mock": false,
+  "providers": {
+    "jev": {
+      "label": "TypeSafe Jev",
+      "model_requested": "typesafe/jev-1.13",
+      "endpoint": "https://openrouter.ai/api/v1/systemone",
+      "wire_format": "systemone",
+      "price_in_per_mtok": 0.042
+    },
+    "openai": {
+      "label": "OpenAI Decisions",
+      "model_requested": "openai/gpt-6-luna-decisions",
+      "endpoint": "https://openrouter.ai/api/v1/systemone",
+      "wire_format": "systemone (OpenRouter)",
+      "price_in_per_mtok": 0.1
+    },
+    "microsoft": {
+      "label": "Microsoft Decision-1",
+      "model_requested": "microsoft/microsoft-decision-1",
+      "endpoint": "https://openrouter.ai/api/v1/systemone",
+      "wire_format": "systemone",
+      "price_in_per_mtok": 0.042
+    }
+  },
+  "config": {
+    "TYPESAFE_BASE_URL": "https://openrouter.ai/api",
+    "JEV_MODEL": "typesafe/jev-1.13",
+    "JEV_PRICE_IN_PER_MTOK": "0.042",
+    "OPENAI_BASE_URL": "https://openrouter.ai/api",
+    "DECISIONS_MODEL": "openai/gpt-6-luna-decisions",
+    "DECISIONS_PRICE_IN_PER_MTOK": "0.10",
+    "MSD_BASE_URL": "https://openrouter.ai/api",
+    "MSD_MODEL": "microsoft/microsoft-decision-1",
+    "MSD_PATH": null,
+    "MSD_PRICE_IN_PER_MTOK": "0.042"
+  },
+  "dataset": {
+    "path": "C:\\Users\\kartikanand\\Downloads\\jev-vs-openai-decisions_UNZIP\\jev-vs-openai-decisions\\data\\cases.jsonl",
+    "sha256": "8e337b334f20396d"
+  },
+  "rubric_version": "1.1",
+  "rubric_sha256": "77829124a289f6b1",
+  "policy": {
+    "version": "withdrawal-policy/1.0.0",
+    "approve_min_probability": 0.8,
+    "approve_min_confidence": 0.5,
+    "manual_review_min_probability": 0.3,
+    "account_takeover_max": 0.5,
+    "auto_approve_ceiling_usd": 5000.0
+  },
+  "git_commit": null,
+  "python": "3.14.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "client_location_note": "Columbus OH"
+}

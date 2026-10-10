@@ -200,7 +200,60 @@ runs/20261008-153000Z-full/
 
 ## Results
 
-*No live results yet.* After a run, the headline table from `report.md` goes here, with a link to its run folder.
+Two full runs on 10 October 2026 (UTC), about two hours apart, from Columbus, Ohio. All three providers were called through OpenRouter with byte-identical requests apart from the model id:
+
+| Provider | Model served |
+|---|---|
+| Jev | `typesafe/jev-1.13-20260917` |
+| OpenAI | `openai/gpt-6-luna-decisions-20261006` |
+| Microsoft | `microsoft/microsoft-decision-1-20261009` |
+
+Each run sent 500 cases in 6 option orders, plus repeats: 9,165 calls per run, with no errors and no retries in either run. Evidence:
+- [`runs/…-or-run1`](runs/) and [`runs/…-or-run2`](runs/): every call with its full response.
+- [`runs/compare-…`](runs/): intervals and run-to-run drift.
+
+Intervals are 95% case-resampling bootstrap intervals pooled across both runs. Accuracy figures use the original option order (approve, step-up, review).
+
+| | TypeSafe Jev | OpenAI Decisions | Microsoft Decision-1 |
+|---|---|---|---|
+| Route macro-F1 | **89.2%** (86.1–92.1) | 71.4% (66.7–75.5) | **87.6%** (83.9–90.8) |
+| Route accuracy | **92.8%** (90.8–94.7) | 77.4% (73.6–81.0) | **91.0%** (88.4–93.4) |
+| Fraud auto-approved | 0 | 0 | 0 |
+| Unnecessary manual reviews, run 1 / run 2 | 1 / 2 | 10 / 10 | 51 / 50 |
+| Latency p50 | 233 ms | **214 ms** | 303 ms |
+| Latency p95 | **321 ms** | 335 ms | 383 ms |
+| Cost per 1,000 decisions | $0.0324 | $0.0611 | **$0.0178** |
+| Input tokens per call (same request) | 773 | 611 | 423 |
+| Brier score (lower is better) | 0.117 | 0.296 | **0.112–0.115** |
+| Same route in all 6 option orders | 91.6–91.8% | 64.2% | **97.2–97.6%** |
+| Macro-F1, best − worst option order | 8–10 pts | 25.9 pts | **1.2–1.5 pts** |
+| Same route for the same case in both runs | 476 / 500 | **500 / 500** | 496 / 500 |
+
+**Pairwise differences, pooled across both runs (A − B):**
+
+| A − B | Macro-F1 | Latency p50 | Separated? |
+|---|---|---|---|
+| Jev − OpenAI | +17.8 pts (+14.2 to +21.9) | +20 ms (+18 to +21) | yes, on both |
+| Microsoft − OpenAI | +16.2 pts (+12.3 to +20.3) | +89 ms (+87 to +90) | yes, on both |
+| Jev − Microsoft | +1.7 pts (−1.8 to +5.2) | −69 ms (−71 to −68) | latency only; **macro-F1 not separated** |
+
+**What the runs show**
+
+1. **Option order changes decisions, most of all for OpenAI.** Listing the same three options in a different order changed OpenAI's route on 179 of 500 cases, in both runs. Its macro-F1 ranges from 60.6% to 86.6% depending on the order, and the first-listed option gets 0.38 average probability against a neutral 0.33. Jev changed route on 41–42 cases and Microsoft on 12–14. **Treat option order as configuration: pin it, version it with the rubric, and test across orders before changing model or rubric.**
+2. **Jev and Microsoft are statistically tied on accuracy; both are well ahead of OpenAI.** The Jev − Microsoft gap includes zero in each run and pooled.
+3. **Every error was cautious.** All three had 100% precision on approve and manual review and approved no fraud. Every mistake moved a case towards step-up.
+4. **Same thresholds, different actions.** Microsoft picks the right route about as often as Jev, but under the same policy it sends around 50 legitimate cases per run to manual review, against 1–2 for Jev. The thresholds were set with Jev-shaped probabilities. **A shared typed contract makes models swappable in format, not in behaviour, so recalibrate thresholds per vendor.**
+5. **Microsoft is cheapest because of its tokenizer, not its price.** It has the same list price as Jev and received the same request, but counted 423 tokens to Jev's 773.
+6. **Repeatability differs.** OpenAI returned identical probabilities for 498 of 500 cases across runs. Microsoft kept the same route for 496 of 500, with small probability changes. Jev changed route on 24 of 500 cases between runs. For audited decisions, "same input, same answer" is worth checking.
+7. **Latency is close and moves with conditions.** OpenAI's p50 went from 224 to 200 ms between runs and Jev's from 229 to 238 ms, so the Jev − OpenAI p50 gap was +5 ms in run 1 and +38 ms in run 2. Each run's own interval is narrow, so the change reflects conditions (time, network), which no single-run interval captures. Jev has the best tail in run 1; Microsoft is consistently about 70–90 ms slower.
+
+**Vendor claims, checked on these cases:**
+- **Microsoft, "zero flips for reordered options":** close, but not zero. 2.4–2.8% of cases changed route, with no measurable position bias.
+- **OpenRouter's listed 0.21 s p50 for Microsoft:** 0.30 s measured from Columbus.
+- **OpenAI beta testers, "choice order changes the probabilities":** confirmed.
+- **OpenAI beta testers, "choice answers are overconfident":** not seen at the top end. OpenAI had the fewest answers at ≥ 0.95 (32%), though in the 0.6–0.8 band it was right 60% of the time when it said 69%.
+
+**Read with care:** these are synthetic cases with synthetic labels, from two runs on one evening, through one route (OpenRouter). The headline accuracy uses one option order, which happens to be Jev's weakest of the six and mid-range for OpenAI; per-order results are in each `report.md`.
 
 ## Reading the results honestly
 
