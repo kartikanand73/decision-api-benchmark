@@ -44,6 +44,14 @@ SAFE_ENV = ["TYPESAFE_BASE_URL", "JEV_MODEL", "JEV_PRICE_IN_PER_MTOK",
             "MSD_BASE_URL", "MSD_MODEL", "MSD_PATH", "MSD_PRICE_IN_PER_MTOK"]   # never keys
 
 
+def _portable(path: Path) -> str:
+    """Path relative to the project when possible, so published run metadata carries no local user path."""
+    try:
+        return Path(path).resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return Path(path).name
+
+
 def _sha(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()[:16]
 
@@ -114,7 +122,7 @@ def meta(a: argparse.Namespace, data_path: Path, clients: dict[str, Client], sta
                               "wire_format": getattr(c, "wire", None) if not a.mock else "mock",
                               "price_in_per_mtok": c.price_in} for n, c in clients.items()},
             "config": {k: os.environ.get(k) for k in SAFE_ENV},
-            "dataset": {"path": str(data_path), "sha256": _sha(data_path.read_bytes())},
+            "dataset": {"path": _portable(data_path), "sha256": _sha(data_path.read_bytes())},
             "rubric_version": RUBRIC_VERSION, "rubric_sha256": _sha(rubric),
             "policy": {"version": POLICY_VERSION, **Thresholds().as_dict()},
             "git_commit": git, "python": platform.python_version(), "platform": platform.platform(),

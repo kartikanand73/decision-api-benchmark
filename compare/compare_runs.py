@@ -15,7 +15,6 @@ Writes runs/compare-<stamp>/comparison.md and comparison.json:
 
 from __future__ import annotations
 
-import hashlib
 import json
 import random
 import statistics
@@ -61,21 +60,11 @@ def _fmt(v, f):
 
 def _load_labels(runs: list[dict]) -> tuple[dict | None, str | None]:
     """Case labels from the dataset the runs used (path in meta.json, checked against its sha256)."""
-    meta = runs[0]["meta"].get("dataset") or {}
-    if not meta.get("path"):
-        return None, "run metadata has no dataset path; intervals for accuracy/macro-F1 skipped"
-    raw = Path(meta["path"])
-    for cand in (raw, ROOT / raw, ROOT / "data" / raw.name):
-        try:
-            if cand.exists():
-                data = cand.read_bytes()
-                if hashlib.sha256(data).hexdigest()[:16] != meta["sha256"]:
-                    return None, f"{cand} does not match the dataset the runs used (sha256 differs)"
-                rows = [json.loads(l) for l in data.decode("utf-8").splitlines() if l.strip()]
-                return {r["id"]: r["expected_route"] for r in rows}, None
-        except OSError:
-            continue
-    return None, f"dataset {raw.name} not found next to the project; intervals for accuracy/macro-F1 skipped"
+    from .dataset import load_for_run
+    cases, why = load_for_run(runs[0]["meta"], ROOT)
+    if cases is None:
+        return None, f"{why}; intervals for accuracy/macro-F1 skipped"
+    return {c["id"]: c["expected_route"] for c in cases}, None
 
 
 def _f1_acc(conf: Counter, total: int) -> tuple[float, float]:

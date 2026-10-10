@@ -44,7 +44,7 @@ Because the policy acts on the probabilities, two models can pick the same route
 
 ## What each API receives
 
-**Recommended: all three through OpenRouter.** OpenRouter serves all three models on its decisions API (`/v1/systemone`), so every provider gets a **byte-for-byte identical request apart from the model id**, over the same network route, billed through the same account. Any difference in the results then comes from the models alone.
+**Recommended: all three through OpenRouter.** OpenRouter serves all three models on its decisions API (`/v1/systemone`), so every provider gets a **byte-for-byte identical request apart from the model id**, over the same network route, billed through the same account. That removes the request format and the network route as explanations, so differences come from the models and how each vendor serves them behind OpenRouter.
 
 | Provider | Base URL | Model id |
 |---|---|---|
@@ -87,11 +87,13 @@ Regenerate or make a fresh set: `python -m compare.dataset --n 500 --seed 606 --
 ## Quick start
 
 ```bash
+git clone https://github.com/kartikanand73/decision-api-benchmark.git
+cd decision-api-benchmark
 python -m venv .venv
-source .venv/bin/activate              # Windows PowerShell: .venv\Scripts\Activate.ps1
+source .venv/bin/activate              # Git Bash on Windows: source .venv/Scripts/activate · PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 cp .env.example .env                   # Windows: copy .env.example .env   then add your keys
-python -m pytest -q                    # 53 tests, no keys needed
+python -m pytest -q                    # 54 tests, no keys needed
 ```
 
 `.env` is loaded automatically, so there's no need to export variables in bash or PowerShell.
@@ -209,8 +211,9 @@ Two full runs on 10 October 2026 (UTC), about two hours apart, from Columbus, Oh
 | Microsoft | `microsoft/microsoft-decision-1-20261009` |
 
 Each run sent 500 cases in 6 option orders, plus repeats: 9,165 calls per run, with no errors and no retries in either run. Evidence:
-- [`runs/…-or-run1`](runs/) and [`runs/…-or-run2`](runs/): every call with its full response.
-- [`runs/compare-…`](runs/): intervals and run-to-run drift.
+- Run 1: [report](runs/20261010-004439Z-or-run1/report.md) · [folder](runs/20261010-004439Z-or-run1/) (every call with its full response in `calls.jsonl`)
+- Run 2: [report](runs/20261010-023836Z-or-run2/report.md) · [folder](runs/20261010-023836Z-or-run2/)
+- Run-to-run comparison, with intervals and drift: the `runs/compare-…` folder (`comparison.md`)
 
 Intervals are 95% case-resampling bootstrap intervals pooled across both runs. Accuracy figures use the original option order (approve, step-up, review).
 
@@ -253,7 +256,7 @@ Intervals are 95% case-resampling bootstrap intervals pooled across both runs. A
 - **OpenAI beta testers, "choice order changes the probabilities":** confirmed.
 - **OpenAI beta testers, "choice answers are overconfident":** not seen at the top end. OpenAI had the fewest answers at ≥ 0.95 (32%), though in the 0.6–0.8 band it was right 60% of the time when it said 69%.
 
-**Read with care:** these are synthetic cases with synthetic labels, from two runs on one evening, through one route (OpenRouter). The headline accuracy uses one option order, which happens to be Jev's weakest of the six and mid-range for OpenAI; per-order results are in each `report.md`.
+**Read with care:** these are synthetic cases with synthetic labels, from two runs on one evening, through one route (OpenRouter). OpenAI's model was reached through OpenRouter's request format, which OpenRouter translates for OpenAI's Decisions API; repeating the six-order check directly against `api.openai.com` would show how much of OpenAI's order sensitivity, if any, comes from that translation. The headline accuracy uses one option order, which happens to be Jev's weakest of the six and mid-range for OpenAI; per-order results are in each `report.md`.
 
 ## Reading the results honestly
 

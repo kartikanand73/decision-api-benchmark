@@ -156,16 +156,18 @@ def load_for_run(meta: dict, root: Path) -> tuple[list[dict] | None, str | None]
     if not ds.get("path"):
         return None, "run metadata has no dataset path"
     raw = Path(ds["path"])
-    for cand in (raw, root / raw, root / "data" / raw.name):
+    candidates = ([raw] if raw.is_absolute() else []) + [root / raw, root / "data" / raw.name, raw]
+    mismatch = None
+    for cand in candidates:                       # first file whose sha256 matches wins
         try:
             if cand.exists():
                 data = cand.read_bytes()
-                if hashlib.sha256(data).hexdigest()[:16] != ds.get("sha256"):
-                    return None, f"{cand} does not match the dataset the run used (sha256 differs)"
-                return [json.loads(l) for l in data.decode("utf-8").splitlines() if l.strip()], None
+                if hashlib.sha256(data).hexdigest()[:16] == ds.get("sha256"):
+                    return [json.loads(l) for l in data.decode("utf-8").splitlines() if l.strip()], None
+                mismatch = f"{cand} does not match the dataset the run used (sha256 differs)"
         except OSError:
             continue
-    return None, f"dataset {raw.name} not found"
+    return None, mismatch or f"dataset {raw.name} not found"
 
 
 def main() -> None:
